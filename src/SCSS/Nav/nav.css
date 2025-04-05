@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999999999;
+  width: 100vw;
+  height: 9vh;
+  color: white;
+}
+
+.nav-box {
+  width: 75%;
+  height: 9vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: 0.7s LoadAnime linear;
+}
+
+.nav-title-box {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Pinyon Script", cursive;
+  font-weight: 700;
+  font-size: 35px;
+}
+
+.title {
+  cursor: pointer;
+  transition: 0.1s;
+}
+.title:hover {
+  text-shadow: 0px 0px 5px white;
+}
+
+.nav-cat-box {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Pinyon Script", cursive;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.nav-cat {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.nav-cat:hover {
+  text-shadow: 0px 0px 5px white;
+}
+
+.nav-soc-box {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-soc {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.nav-soc:hover {
+  filter: drop-shadow(0 0 5px white);
+}
+
+@keyframes LoadAnime {
+  0% {
+    opacity: 0%;
+    margin-top: 20px;
+  }
+  100% {
+    opacity: 100%;
+    margin-top: 0px;
+  }
+}/*# sourceMappingURL=nav.css.map */
