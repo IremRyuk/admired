@@ -4,31 +4,11 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-::-webkit-scrollbar {
-  width: 20px;
-}
-
-::-webkit-scrollbar-track {
-  border: 2px solid white;
-  border-radius: 25px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #eeeeee;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: white;
-}
-
 .cat-page {
-  margin-top: 10vh;
+  margin-top: 3vh;
   width: 95%;
-  height: 90vh;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 
 .cat-f-text {

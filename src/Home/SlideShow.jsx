@@ -2,34 +2,35 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import First from '../Photoes/testslide/1.png'
+import Second from '../Photoes/testslide/2.jpg'
+import Third from '../Photoes/testslide/3.webp'
+import Forth from '../Photoes/testslide/4.jpg'
 
 export default function SlideShow() {
     const data = [
         {caption:"Caption 1",
-            img:"https://www.tvinsider.com/wp-content/uploads/2020/09/the-boys-season-2-homelander-antony-starr-1014x570.jpg"
+            img:First
         },
         {caption:"Caption 2",
-            img:"https://images.foxtv.com/static.fox35orlando.com/www.fox35orlando.com/content/uploads/2023/04/1280/720/Image-from-iOS-14.jpg?ve=1&tl=1"
+            img:Second
         },
         {caption:"Caption 3",
-            img:"https://images.bauerhosting.com/empire/2019/07/vader-best-villains.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=1440&q=80"
+            img:Third
         },
         {caption:"Caption 4",
-            img:"https://news.utexas.edu/wp-content/uploads/2019/11/Joker-600x400-c-default.jpg"
-        },
-        {caption:"Caption 5",
-            img:"https://static1.moviewebimages.com/wordpress/wp-content/uploads/2022/05/x-men-the-last-stand-magneto-ian-mckellen.jpeg"
+            img:Forth
         },
     ]
   return (
     <div className='slideshow'>
          <Swiper
-      spaceBetween={0}
+      spaceBetween={50}
       slidesPerView={1}
       modules={[Autoplay, Pagination, Navigation]}
       className='slideshow'
       autoplay={{
-        delay: 3000,
+        delay: 4000,
         disableOnInteraction: false,
       }}
       pagination={{

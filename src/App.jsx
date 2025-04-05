@@ -1,3 +1,4 @@
+import './SCSS/App/app.css'
 import { Routes,Route } from "react-router-dom"
 import Home from "./Home/Home"
 import Nav from "./Nav/Nav"
@@ -7,7 +8,7 @@ import Lady from './Category/Lady'
 
 function App() {
   return (
-    <>
+    <div className='App'>
     <Nav />
     <Chat />
     <Routes>
@@ -15,7 +16,7 @@ function App() {
       <Route path='/lady' element={<Lady />} />
       <Route path='/man' element={<Man />} />
     </Routes>
-    </>
+    </div>
   )
 }
 

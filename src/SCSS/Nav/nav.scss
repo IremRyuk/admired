@@ -4,15 +4,24 @@
     margin: 0;
     box-sizing: border-box;
 }
+// ScrollBar
+::-webkit-scrollbar {
+    width: 14px;
+}
+::-webkit-scrollbar-track {
+    border: 2px solid white;
+}
+::-webkit-scrollbar-thumb {
+    background: #ff6161; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(0, 100%, 75%); 
+}
 // Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
 
 // SCSS
 .nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 99999999999;
     width: 100vw;
     height: 9vh;
     color: white;
@@ -23,7 +32,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    animation: 0.7s LoadAnime linear;
 }
 .nav-title-box{
     width: 25%;
@@ -82,15 +90,4 @@
         &:hover{
             filter: drop-shadow(0 0 5px white);
         }
-}
-
-@keyframes LoadAnime {
-    0%{
-        opacity: 0%;
-        margin-top: 20px;
-    }
-    100%{
-        opacity: 100%;
-        margin-top: 0px;
-    }
 }
