@@ -5,7 +5,7 @@ import Instagram from '../Photoes/inst.svg'
 import {useNavigate} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {Drawer} from '@mui/material'
-import { ScreenWidthAct } from '../Redux/Action/SCreenWidthAct'
+import { ScreenWidthAct } from '../Redux/Action/ScreenWidthAct'
 import { useDispatch, useSelector } from 'react-redux'
 import Menu from '../Photoes/menu.png'
 
