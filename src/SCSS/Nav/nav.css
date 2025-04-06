@@ -6,7 +6,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 14px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -14,11 +14,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff6161;
+  background: white;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(0, 100%, 75%);
+  background: rgb(139, 139, 139);
 }
 
 .nav {
@@ -39,7 +39,6 @@
   width: 25%;
   height: 100%;
   display: flex;
-  gap: 50px;
   justify-content: center;
   align-items: center;
   font-family: "Pinyon Script", cursive;
@@ -89,4 +88,69 @@
 }
 .nav-soc:hover {
   filter: drop-shadow(0 0 5px white);
+}
+
+.menuIcon {
+  -o-object-fit: contain;
+     object-fit: contain;
+  cursor: pointer;
+}
+
+.miniScrBox {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, #C74F80, #CAA2C3);
+}
+
+.mini-nav-title-box {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Pinyon Script", cursive;
+  font-weight: 700;
+  font-size: 40px;
+  color: white;
+}
+
+.mini-title {
+  cursor: pointer;
+}
+
+.mini-nav-cat-box {
+  border-top: 1px solid white;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 50px;
+  gap: 50px;
+  color: white;
+  font-family: "Pinyon Script", cursive;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.mini-nav-cat {
+  cursor: pointer;
+}
+
+.mini-nav-soc-box {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 425px) {
+  .miniScrBox {
+    width: 200px;
+  }
 }/*# sourceMappingURL=nav.css.map */
