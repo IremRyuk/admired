@@ -1,3 +1,3 @@
-export const ScreenWidthAct = (changeWidth) => {
+export let ScreenWidthAct = (changeWidth) => {
     return {type:'changeWidth',changeWidth}
 }
