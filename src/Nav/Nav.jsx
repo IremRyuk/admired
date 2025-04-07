@@ -70,12 +70,12 @@ export default function Nav(){
 <div className='miniScrBox'>
     {/* Mini Title */}
 <div className='mini-nav-title-box'>
-<p className="mini-title" onClick={()=>navigate('/')}>Admired</p>
+<p className="mini-title" onClick={()=>{navigate('/'),setOpen(e=>!e)}}>Admired</p>
 </div>
    {/* Mini Categories */}
 <div className='mini-nav-cat-box'>
-<p className='mini-nav-cat' onClick={()=>navigate('/man')}>Man</p>
-<p className='mini-nav-cat' onClick={()=>navigate('/lady')}>Woman</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/man'),setOpen(e=>!e)}}>Man</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/lady'),setOpen(e=>!e)}}>Woman</p>
 </div>
   {/* Mini Socials */}
 <div className='mini-nav-soc-box'>

@@ -27,7 +27,7 @@
     color: white;
 }
 .nav-box{
-    width: 75%;
+    width: 70%;
     height: 9vh;
     display: flex;
     justify-content: space-between;
@@ -148,7 +148,19 @@ color: white;
     justify-content: space-around;
 }
 
-
+@media screen and (max-width:768px){
+    .nav-box{
+        width: 95%;
+    }
+    .nav-title-box{
+        justify-content: start;
+    }
+}
+@media screen and (max-width:600px) {
+    .menuIcon{
+        scale: 0.7;
+    }
+}
 @media screen and (max-width:425px) {
     .miniScrBox{
         width:200px;

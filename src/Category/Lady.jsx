@@ -61,10 +61,19 @@ window.open(wtUrl,'_blank').focus()
 
             <center><div className='cat-col'>
 <p className='cat-f-text'>აირჩიეთ ქალის საჩუქრები</p>
-<FormGroup sx={{display:'grid',gridTemplateColumns:'30% 30% 30%',width:'100%',alignItems:'center',alignSelf:'center',justifyContent:'center', textAlign:'start'}}>
+<FormGroup sx={{
+    display:'grid',
+    gridTemplateColumns:{xs:'40% 40%',sm:'30% 30% 30%'},
+    width:'100%',
+    alignItems:'center',
+    alignSelf:'center',
+    justifyContent:'center',
+    textAlign:'start',
+    fontSize:{xs:'17px',sm:'24px'}
+    }}>
     {datas.map(res=>(
         <div key={res.id}>
-        <FormControlLabel sx={{paddingLeft:'35px'}} control={<Checkbox />} label={res.names} onChange={()=>addName(res.names)}/>
+        <FormControlLabel sx={{paddingLeft:{xs:'20px',sm:'35px'}}} control={<Checkbox />} label={res.names} onChange={()=>addName(res.names)}/>
         </div>
     ))}
 </FormGroup>
@@ -113,14 +122,14 @@ window.open(wtUrl,'_blank').focus()
 
 <center><div className='cat-col'>
 <p className='cat-f-text'>აირჩიეთ თარიღი</p>
-    <div className='cat-col-date'>
+    <div className='cat-col-date date-box'>
         <div>
 <DatePicker className='datesStart' maxDate={endDate} dateFormat="dd/MM/yyyy" placeholderText='აირჩიეთ თარიღი' selected={startDate} onChange={(date) => setStartDate(date)} />
-{startDate==null?<p className='cat-f-text'>აირჩიეთ თარიღი</p>:<p className='cat-f-text'>{startDate.getDate()} / {startDate.getMonth()+1} / {startDate.getFullYear()}-დან</p>}
+{startDate==null?<p className='cat-f-text'>****/**/**-დან</p>:<p className='cat-f-text'>{startDate.getDate()} / {startDate.getMonth()+1} / {startDate.getFullYear()}-დან</p>}
 </div>
 <div>
 <DatePicker minDate={startDate} dateFormat="dd/MM/yyyy"  placeholderText='აირჩიეთ თარიღი' selected={endDate} onChange={(date) => setEndDate(date)} />
-{endDate==null?<p className='cat-f-text'>აირჩიეთ თარიღი</p>:<p className='cat-f-text'>{endDate.getDate()} / {endDate.getMonth()+1} / {endDate.getFullYear()}-დან</p>}
+{endDate==null?<p className='cat-f-text'>****/**/**-მდე</p>:<p className='cat-f-text'>{endDate.getDate()} / {endDate.getMonth()+1} / {endDate.getFullYear()}-დან</p>}
 </div>
 </div>
 </div></center>
