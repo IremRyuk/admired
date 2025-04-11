@@ -1,29 +1,31 @@
-import ChatIcon from '@mui/icons-material/Chat';
 import '../SCSS/Home/home.css'
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import {SpeedDial,SpeedDialAction} from '@mui/material'
+import InfoIcon from '@mui/icons-material/Info';
+import { IconButton,Modal } from '@mui/material';
+import { useState } from 'react';
 
 export default function Chat() {
-  const actions = [
-    { icon: <WhatsAppIcon />, name: 'Whatsappp' },
-    { icon: <LocalPhoneIcon />, name: 'Phone' },
-    { icon: <FacebookIcon />, name: 'Facebook' },
-  ]
+  const [modal,setModal] = useState(false)
   return (
-        <SpeedDial
-        ariaLabel="SpeedDial openIcon example"
-        sx={{ position: 'fixed', bottom:'5%', right:'5%'}}
-        icon={<ChatIcon openicon={<ChatIcon sx={{bgcolor:'green',transition:'0.2s','&:hover':{scale: '1.15'}}}/>} />}
-      >
-        {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            name={action.name}
-          />
-        ))}
-      </SpeedDial>
+    <>
+<div className='info'>
+<IconButton onClick={()=>setModal(e=>!e)}>
+  <InfoIcon sx={{color:'white',width:'60px',height:'60px'}}/>
+  </IconButton>
+</div>
+<Modal
+  open={modal}
+  onClose={()=>setModal(e=>!e)}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
+  <div className='modal-box'>
+    <p className='modal-title'>Admired</p>
+    <p className='modal-title'>ჩვენ ვქნით მომენტებს დაუვიწყარ მოგონებებად</p>
+    <p className='modal-title'>ნებისმიერი სასაჩუქრე ნივთების გალამაზება , რესტორნების და სასტუმროს დაჯავშნა</p>
+    <p className='modal-title'>საყვარელი ადამინისთვის  პაემნის ორგანიზება</p>
+    <p className='modal-title'>ნივთების გაფორმება,შეფუთვა</p>
+  </div>
+</Modal>
+</>
   )
 }

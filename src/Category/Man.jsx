@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import '../SCSS/Category/category.css'
 import { FormGroup,FormControlLabel,Checkbox,Switch } from '@mui/material'
-import Datas from '../Res/lady.json'
+import Datas from '../Res/man.json'
 import { useDispatch,useSelector } from 'react-redux'
 import {DataFilterAct,DataFilterRemoveAct,DataMin,DataMax} from '../Redux/Action/DataFilterAct'
 import Gmail from '../Photoes/gmail.webp'

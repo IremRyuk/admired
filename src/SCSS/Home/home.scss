@@ -46,3 +46,42 @@
         background-color: #C74F80;
     }
 }
+// Info
+.info{
+    position: fixed;
+    right: 3%;
+    bottom: 5%;
+    z-index: 99999999;
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C74F80;
+}
+.modal-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 500px;
+    padding: 10px;
+    background-color: white;
+    // Animation
+    animation: 0.4s ModalAnime linear;
+}
+.modal-title{
+    color: black;
+}
+@keyframes ModalAnime {
+    0%{
+        opacity: 0;
+        margin-top: 20px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
