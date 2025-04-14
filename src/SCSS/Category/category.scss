@@ -4,15 +4,22 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 // Defaults
 .cat-page {
     margin-top: 3vh;
     width: 70%;
     display: flex;
     flex-direction: column;
+    // Fonts
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
 }
 .cat-f-text {
     font-size: 24px;
+    
 }
 .cat-col {
     width: 100%;
@@ -83,13 +90,23 @@ input::-webkit-inner-spin-button {
     width: 100px;
     font-size: 22px;
     outline: none;
-    border: 2px solid #314648;
-    border-radius: 2.4mm;
+    border: none;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid #314648;
+    background-color: #e6e6e6;
     text-align: center;
     padding: 5px 10px;
     transition: 0.2s;
+    border-radius: 1.4mm;
     &:hover{
-        border: 3px solid #314648;
+        border-radius: 2.4mm;
+        border: 2px solid #314648;
+    }
+    &:focus{
+        border-radius: 2.4mm;
+        border: 2px solid #314648;
     }
 }
 .cat-col-date {

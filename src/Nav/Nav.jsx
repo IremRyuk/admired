@@ -8,6 +8,9 @@ import {Drawer} from '@mui/material'
 import { ScreenWidthAct } from '../Redux/Action/ScreenWidthAct'
 import { useDispatch, useSelector } from 'react-redux'
 import Menu from '../Photoes/menu.png'
+import Geo from '../Photoes/flag/geo.webp'
+import Eng from '../Photoes/flag/eng.webp'
+import {FlagAct} from '../Redux/Action/FlagAct'
 
 export default function Nav(){
     const navigate = useNavigate()
@@ -27,6 +30,10 @@ export default function Nav(){
         dispatch(ScreenWidthAct(width))
     },[width])
 
+// Language
+const lang = useSelector(res=>res.flag)
+
+
     return(
         <div className="nav">
             <center>
@@ -40,8 +47,8 @@ export default function Nav(){
             <>
             {/* Categories */}
             <div className='nav-cat-box'>
-            <p className='nav-cat' onClick={()=>navigate('/man')}>Man</p>
-            <p className='nav-cat' onClick={()=>navigate('/lady')}>Woman</p>
+            <p className='nav-cat' onClick={()=>navigate('/man')}>{lang==='namesGeo'?'კაცი':'Man'}</p>
+            <p className='nav-cat' onClick={()=>navigate('/lady')}>{lang==='namesGeo'?'ქალი':'Woman'}</p>
             </div>
             {/* Socials */}
             <div className='nav-soc-box'>
@@ -49,15 +56,23 @@ export default function Nav(){
             <img src={Tiktok} alt="admired" className="nav-soc" />
             <img src={Instagram} alt="admired" className="nav-soc" />
             </div>
+
+            <div className='nav-flag'>
+                <img src={lang==='namesGeo'?Geo:Eng} alt='admired' className='nav-flag-current'/>
+                <div className='nav-flag-menu'>
+                <img src={Geo} className='nav-flag-img' alt='admired' onClick={()=>dispatch(FlagAct('namesGeo'))}/>
+                <img src={Eng} className='nav-flag-img' alt='admired' onClick={()=>dispatch(FlagAct('namesEn'))}/>
+                </div>
+            </div>
             </>
             }
                {widthW<1200 &&
-            <>
+               <>
             <img src={Menu} className='menuIcon' alt='admired' onClick={()=>setOpen(e=>!e)}/>
             </>
             }
-            
-            
+
+
             </div>
             </center>
 
@@ -74,8 +89,8 @@ export default function Nav(){
 </div>
    {/* Mini Categories */}
 <div className='mini-nav-cat-box'>
-<p className='mini-nav-cat' onClick={()=>{navigate('/man'),setOpen(e=>!e)}}>Man</p>
-<p className='mini-nav-cat' onClick={()=>{navigate('/lady'),setOpen(e=>!e)}}>Woman</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/man'),setOpen(e=>!e)}}>{lang==='namesGeo'?'კაცი':'Man'}</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/lady'),setOpen(e=>!e)}}>{lang==='namesGeo'?'ქალი':'Woman'}</p>
 </div>
   {/* Mini Socials */}
 <div className='mini-nav-soc-box'>

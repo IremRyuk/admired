@@ -5,12 +5,12 @@ export const DataFilterRed = (state=[],action) => {
         default: return state
     }
 }
-export const DataMinBud = (state='',action) => {
-    switch(action.type){
-        case 'minBud' : return state = action.minBud
-        default: return state
-    }
-}
+// export const DataMinBud = (state='',action) => {
+//     switch(action.type){
+//         case 'minBud' : return state = action.minBud
+//         default: return state
+//     }
+// }
 export const DataMaxBud = (state='',action) => {
     switch(action.type){
         case 'maxBud' : return state = action.maxBud

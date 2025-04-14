@@ -1,32 +1,41 @@
 [
     {
         "id": 1,
-        "names": "ვარდი"
+        "namesGeo": "შაურმა",
+        "namesEn":"Shawarma"
     }, {
         "id": 2,
-        "names": "ვარკაჭაჭა"
+        "namesGeo": "მწვადი",
+        "namesEn":"Barbecue"
     }, {
         "id": 3,
-        "names": "მსხალი"
+        "namesGeo": "სათვალე",
+        "namesEn":"Glasses"
     },
     {
         "id": 4,
-        "names": "პეპელა"
+        "namesGeo": "სამკაული",
+        "namesEn":"Jewelry"
     }, {
         "id": 5,
-        "names": "ჭვავი"
+        "namesGeo": "სუნამო",
+        "namesEn":"Parfume"
     }, {
         "id": 6,
-        "names": "სანთებელა"
+        "namesGeo": "სუვენირი",
+        "namesEn":"Souvenir"
     },
     {
         "id": 7,
-        "names": "მწვადი"
+        "namesGeo": "საათი",
+        "namesEn":"Watch"
     }, {
         "id": 8,
-        "names": "ღვინო"
+        "namesGeo": "ღვინო",
+        "namesEn":"Wine"
     }, {
         "id": 9,
-        "names": "დუდუკი"
+        "namesGeo": "დუდუკი",
+        "namesEn":"Duduk"
     }
 ]

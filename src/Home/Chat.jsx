@@ -20,10 +20,10 @@ export default function Chat() {
 >
   <div className='modal-box'>
     <p className='modal-title'>Admired</p>
-    <p className='modal-title'>ჩვენ ვქნით მომენტებს დაუვიწყარ მოგონებებად</p>
-    <p className='modal-title'>ნებისმიერი სასაჩუქრე ნივთების გალამაზება , რესტორნების და სასტუმროს დაჯავშნა</p>
-    <p className='modal-title'>საყვარელი ადამინისთვის  პაემნის ორგანიზება</p>
-    <p className='modal-title'>ნივთების გაფორმება,შეფუთვა</p>
+    <p className='modal-title'>ჩვენ ვქნით საჩუქრებს, რომლებიც რჩება დაუვიწყარ მოგონებებად</p>
+    <p className='modal-title'>ყოველი ნივთი იქმნება პერსონალურად</p>
+    <p className='modal-title'>როგორ ხდება შეკვეთა - ლალალა </p>
+    <p className='modal-title'>რა დრო ჭირდება - ლალალა </p>
   </div>
 </Modal>
 </>

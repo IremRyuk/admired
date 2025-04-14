@@ -5,7 +5,7 @@ import '../SCSS/Category/category.css'
 import { FormGroup,FormControlLabel,Checkbox,Switch } from '@mui/material'
 import Datas from '../Res/lady.json'
 import { useDispatch,useSelector } from 'react-redux'
-import {DataFilterAct,DataFilterRemoveAct,DataMin,DataMax} from '../Redux/Action/DataFilterAct'
+import {DataFilterAct,DataFilterRemoveAct,DataMax} from '../Redux/Action/DataFilterAct'
 import Gmail from '../Photoes/gmail.webp'
 import Whatsapp from '../Photoes/wts.webp'
 import Remove from '../Photoes/remove.webp'
@@ -16,11 +16,9 @@ export default function Lady(){
     // Choose Gifts
     const data = useSelector(res=>{return res.dataFilter})
     // Budget
-    const minBud = useSelector(res=>{return res.minBud})
     const maxBud = useSelector(res=>{return res.maxBud})
     // Date
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const [date, setDate] = useState(null);
     // Restoraunt
     const [rest,setRest] = useState(false)
     const [hotel,setHotel] = useState(false)
@@ -28,12 +26,17 @@ export default function Lady(){
     const addName = (names) => {
         if(!data.includes(names)){
             dispatch(DataFilterAct(names))
-            // console.log(data)
+            console.log(data)
         }else{
             dispatch(DataFilterRemoveAct(names))
-            // console.log('gaiwminda',data)
+            console.log('gaiwminda',data)
         }
     }
+
+    // Language
+    const lang = useSelector(res=>res.flag)
+
+
     // Data
     const datas = Datas
 
@@ -41,16 +44,16 @@ export default function Lady(){
     const WhatsAppSend = () => {
 const number = +995592007017
 const datas = data
-const budget = `${minBud } - ${maxBud}`
-const date = `${startDate}-${endDate}`
+const budget = `- ${maxBud}`
+const dates = `${date.getDate()} / ${date.getMonth()+1} / ${date.getFullYear()}`
 const reserve = `რესტორანი - ${rest} || სასტუმრო - ${hotel}`
 
 const wtUrl = 'https://wa.me/' + number + '?text='
 + "არჩეული - " + datas +' ; ' + "%0a"
 + "ბიუჯეტი - " + budget +' ; ' + "%0a"
-+ "თარიღი - " + date +' ; '+ "%0a"
++ "თარიღი - " + dates +' ; '+ "%0a"
 + "დაჯავშნა - " + reserve +' ; ' + "%0a"
-
+        
 
 window.open(wtUrl,'_blank').focus()
 
@@ -60,7 +63,7 @@ window.open(wtUrl,'_blank').focus()
             {/* Gifts */}
 
             <center><div className='cat-col'>
-<p className='cat-f-text'>აირჩიეთ ქალის საჩუქრები</p>
+<p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ ქალის საჩუქრები':'Choose gifts for women'}</p>
 <FormGroup sx={{
     display:'grid',
     gridTemplateColumns:{xs:'40% 40%',sm:'30% 30% 30%'},
@@ -73,7 +76,7 @@ window.open(wtUrl,'_blank').focus()
     }}>
     {datas.map(res=>(
         <div key={res.id}>
-        <FormControlLabel sx={{paddingLeft:{xs:'20px',sm:'35px'}}} control={<Checkbox />} label={res.names} onChange={()=>addName(res.names)}/>
+        <FormControlLabel sx={{paddingLeft:{xs:'20px',sm:'35px'}}} control={<Checkbox />} label={lang==='namesGeo'?res.namesGeo:res.namesEn} onChange={()=>addName(lang==='namesGeo'?res.namesGeo:res.namesEn)}/>
         </div>
     ))}
 </FormGroup>
@@ -83,14 +86,14 @@ window.open(wtUrl,'_blank').focus()
            {/* Restourant */}
 
            <center><div className='cat-col'>
-           <p className='cat-f-text'>თუ გსურთ სასტუმროს ან რესტორნის ორგანიზება , გთხოვთ აირჩიოთ </p>
-              <FormControlLabel control={<Switch onClick={()=>setRest(e=>!e)} />} label="რესტორნის ორგანიზება" />
+           <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ ქალის საჩუქრები':'If you would like to organize a hotel or restaurant, please select'}</p>
+              <FormControlLabel control={<Switch onClick={()=>setRest(e=>!e)} />} label={lang==='namesGeo'?'რესტორნის ორგანიზება':'Restaurant organization'} />
                 {rest == true
                 ?<div className="cat-org-box">
-                <p className='cat-org-text'>ჩვენს მიერ არჩეულ რესტორანში</p>
-                <p className='cat-org-text'> ან თუ გსურთ რესტორნის ორგანიზება თქვენს მიერ არჩეული რესტორანში , შეავსეთ ველი</p>
+                <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ რესტორანში':'At the restaurant of our choice'}</p>
+                <p className='cat-org-text'>{lang==='namesGeo'?' ან თუ გსურთ რესტორნის ორგანიზება თქვენს მიერ არჩეული რესტორანში , შეავსეთ ველი':'Or if you want to organize a restaurant at a restaurant of your choice, fill in the field'}</p>
                 <textarea 
-                placeholder='შეავსეთ ველი ...'
+                placeholder={lang==='namesGeo'?'შეავსეთ ველი ...':'Fill input ...'}
                 className='cat-org-textarea'
                 ></textarea>
                 </div>
@@ -102,13 +105,13 @@ window.open(wtUrl,'_blank').focus()
                 :null
                 }
                 {/* Xazi */}
-              <FormControlLabel control={<Switch onClick={()=>setHotel(e=>!e)} />} label="სასტუმროს ორგანიზება" />
+              <FormControlLabel control={<Switch onClick={()=>setHotel(e=>!e)} />} label={lang==='namesGeo'?'სასტუმროს ორგანიზება':'Hotel organization'} />
               {hotel == true
                 ?<div className="cat-org-box">
-                <p className='cat-org-text'>ჩვენს მიერ არჩეულ სასტუმროში</p>
-                <p className='cat-org-text'> ან თუ გსურთ სასტუმროს ორგანიზება თქვენს მიერ არჩეული სასტუმროში , შეავსეთ ველი</p>
+                <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':'At the hotel we chose'}</p>
+                <p className='cat-org-text'> {lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':'Or if you want to organize a hotel stay at a hotel of your choice, fill in the field'}</p>
                 <textarea 
-                placeholder='შეავსეთ ველი ...'
+                placeholder={lang==='namesGeo'?'შეავსეთ ველი ...':'Fill input ...'}
                 className='cat-org-textarea'
                 ></textarea>
                 </div>
@@ -121,40 +124,24 @@ window.open(wtUrl,'_blank').focus()
            {/* Date */}
 
 <center><div className='cat-col'>
-<p className='cat-f-text'>აირჩიეთ თარიღი</p>
+<p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ თარიღი და ბიუჯეტი':'Choose a date and budget'}</p>
     <div className='cat-col-date date-box'>
-        <div>
-<DatePicker className='datesStart' maxDate={endDate} dateFormat="dd/MM/yyyy" placeholderText='აირჩიეთ თარიღი' selected={startDate} onChange={(date) => setStartDate(date)} />
-{startDate==null?<p className='cat-f-text'>****/**/**-დან</p>:<p className='cat-f-text'>{startDate.getDate()} / {startDate.getMonth()+1} / {startDate.getFullYear()}-დან</p>}
+        {/* Date */}
+<div className='date-box-cur'>
+<DatePicker  dateFormat="dd/MM/yyyy"  placeholderText='აირჩიეთ თარიღი' selected={date} onChange={(date) => setDate(date)} />
+{date==null?<p className='cat-f-text'>****/**/**</p>:<p className='cat-f-text'>{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}</p>}
 </div>
-<div>
-<DatePicker minDate={startDate} dateFormat="dd/MM/yyyy"  placeholderText='აირჩიეთ თარიღი' selected={endDate} onChange={(date) => setEndDate(date)} />
-{endDate==null?<p className='cat-f-text'>****/**/**-მდე</p>:<p className='cat-f-text'>{endDate.getDate()} / {endDate.getMonth()+1} / {endDate.getFullYear()}-დან</p>}
+{/* Budget */}
+<div className='budg-box-cur'>
+<input type='number' max={9999999} placeholder='123...' className='cat-bud'onChange={(e)=>dispatch(DataMax(e.target.value))} value={maxBud} />
+{maxBud==''?<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':'Budget'} </p>:<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':'Budget'} {maxBud}</p>}
 </div>
 </div>
 </div></center>
-
-
-             {/* Budget */}
-
-        <center><div className='cat-col'>
-        <p className='cat-f-text'>აირჩიეთ ბიუჯეტი</p>
-        <div className='cat-col-date'>
-            <div>
-        <input type='number' min={1} max={maxBud} placeholder='0' className='cat-bud' onChange={(e)=>dispatch(DataMin(e.target.value))} value={minBud} />
-        {minBud==null?<p className='cat-f-text'> მინიმუმი </p>:<p className='cat-f-text'>მინიმუმი {minBud}</p>}
-        </div>
-        <div>
-        <input type='number' min={minBud} max={9999999} placeholder='10 000' className='cat-bud'onChange={(e)=>dispatch(DataMax(e.target.value))} value={maxBud} />
-        {maxBud==null?<p className='cat-f-text'> მაქსიმუმი </p>:<p className='cat-f-text'>მაქსიმუმი {maxBud}</p>}
-        </div>
-        </div>
-</div></center>
-
 
             {/* BTN Send */}
             <center><div className='cat-col'>
-            <p className='cat-f-text'>გაგზავნა</p>
+            <p className='cat-f-text'>{lang==='namesGeo'?'გაგზავნა':'Send'}</p>
 <div className='cat-btn-send'>
 <img src={Remove} alt='remove' onClick={()=>window.location.reload()}className='sendImage remove' title='გვერდის გასუფთავება'/> |
 <img src={Gmail} alt='gmail' className='sendImage gmail' title='გაგზავნა Gmail-ზე'/> |

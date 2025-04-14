@@ -36,7 +36,7 @@
 }
 
 .nav-title-box {
-  width: 25%;
+  width: 20%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -55,7 +55,7 @@
 }
 
 .nav-cat-box {
-  width: 50%;
+  width: 45%;
   height: 100%;
   display: flex;
   gap: 50px;
@@ -80,6 +80,55 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.nav-flag {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-flag-current {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 50%;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.nav-flag-menu {
+  position: absolute;
+  z-index: 1000;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  gap: 10px;
+  height: -moz-min-content;
+  height: min-content;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  border-radius: 2.4mm;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.nav-flag-img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 55%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.nav-flag:hover .nav-flag-menu {
+  display: flex;
 }
 
 .nav-soc {
