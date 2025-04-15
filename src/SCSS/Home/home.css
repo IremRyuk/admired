@@ -63,6 +63,7 @@
   justify-content: center;
   align-items: center;
   background-color: #C74F80;
+  animation: 2s AnimeCircle infinite;
 }
 
 .modal-box {
@@ -89,5 +90,19 @@
   100% {
     opacity: 1;
     margin-top: 0px;
+  }
+}
+@keyframes AnimeCircle {
+  0% {
+    background-color: #C74F80;
+    padding: 10px;
+  }
+  50% {
+    background-color: rgba(199, 79, 127, 0.5764705882);
+    padding: 5px;
+  }
+  100% {
+    background-color: rgba(199, 79, 127, 0);
+    padding: 0px;
   }
 }/*# sourceMappingURL=home.css.map */
