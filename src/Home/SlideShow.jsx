@@ -9,10 +9,10 @@ import Forth from '../Photoes/testslide/4.jpg'
 
 export default function SlideShow() {
     const data = [
-        {caption:"Caption 1",
+        {caption:"ყოველი ნივთი იქმნება პერსონალურად",
             img:First
         },
-        {caption:"Caption 2",
+        {caption:"ჩვენ ვქნით საჩუქრებს, რომლებიც რჩება დაუვიწყარ მოგონებებად",
             img:Second
         },
         {caption:"Caption 3",

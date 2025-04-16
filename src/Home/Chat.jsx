@@ -20,10 +20,8 @@ export default function Chat() {
 >
   <div className='modal-box'>
     <p className='modal-title'>Admired</p>
-    <p className='modal-title'>ჩვენ ვქნით საჩუქრებს, რომლებიც რჩება დაუვიწყარ მოგონებებად</p>
-    <p className='modal-title'>ყოველი ნივთი იქმნება პერსონალურად</p>
-    <p className='modal-title'>როგორ ხდება შეკვეთა - ლალალა </p>
-    <p className='modal-title'>რა დრო ჭირდება - ლალალა </p>
+    <p className='modal-title'>1) როგორ ხდება შეკვეთა - ლალალა </p>
+    <p className='modal-title'>2) რა დრო ჭირდება - ლალალა </p>
   </div>
 </Modal>
 </>

@@ -129,7 +129,7 @@ window.open(wtUrl,'_blank').focus()
         {/* Date */}
 <div className='date-box-cur'>
 <DatePicker  dateFormat="dd/MM/yyyy"  placeholderText='აირჩიეთ თარიღი' selected={date} onChange={(date) => setDate(date)} />
-{date==null?<p className='cat-f-text'>****/**/**</p>:<p className='cat-f-text'>{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}</p>}
+{date==null?<p className='cat-f-text'>**/**/****</p>:<p className='cat-f-text'>{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}</p>}
 </div>
 {/* Budget */}
 <div className='budg-box-cur'>
