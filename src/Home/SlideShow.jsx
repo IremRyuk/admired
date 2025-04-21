@@ -6,22 +6,29 @@ import First from '../Photoes/testslide/1.png'
 import Second from '../Photoes/testslide/2.jpg'
 import Third from '../Photoes/testslide/3.webp'
 import Forth from '../Photoes/testslide/4.jpg'
+import { useSelector } from 'react-redux';
 
 export default function SlideShow() {
     const data = [
-        {caption:"ყოველი ნივთი იქმნება პერსონალურად",
-            img:First
+        {captionGeo:"ყოველი ნივთი იქმნება პერსონალურად",
+         captionEng:"Every item is made personally",
+         img:First
         },
-        {caption:"ჩვენ ვქნით საჩუქრებს, რომლებიც რჩება დაუვიწყარ მოგონებებად",
+        {captionGeo:"ჩვენ ვქნით საჩუქრებს, რომლებიც რჩება დაუვიწყარ მოგონებებად",
+          captionEng:"Every item is made personally",
             img:Second
         },
-        {caption:"Caption 3",
+        {captionGeo:"საჩუქრებს",
+          captionEng:"Every item is made personally",
             img:Third
         },
-        {caption:"Caption 4",
+        {captionGeo:"რჩება",
+          captionEng:"Every item is made personally",
             img:Forth
         },
     ]
+        // Language
+        const lang = useSelector(res=>res.flag)
   return (
     <div className='slideshow'>
          <Swiper
@@ -42,7 +49,7 @@ export default function SlideShow() {
         {data.map(res=>(
             <SwiperSlide className='slidePage' key={res.caption}>
                 <img src={res.img} alt={res.caption} className='slideImg'/>
-                <p className='slideCaption'>{res.caption}</p>
+                <p className='slideCaption'>{lang==='namesGeo'?res.captionGeo:res.captionEng}</p>
             </SwiperSlide>
         ))}
     </Swiper>

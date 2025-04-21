@@ -60,8 +60,8 @@ const lang = useSelector(res=>res.flag)
             <div className='nav-flag'>
                 <img src={lang==='namesGeo'?Geo:Eng} alt='admired' className='nav-flag-current'/>
                 <div className='nav-flag-menu'>
-                <img src={Geo} className='nav-flag-img' alt='admired' onClick={()=>dispatch(FlagAct('namesGeo'))}/>
-                <img src={Eng} className='nav-flag-img' alt='admired' onClick={()=>dispatch(FlagAct('namesEn'))}/>
+                <img src={Geo} className='nav-flag-img' alt='admired' onClick={()=>{dispatch(FlagAct('namesGeo')),localStorage.setItem('names','namesGeo')}} />
+                <img src={Eng} className='nav-flag-img' alt='admired' onClick={()=>{dispatch(FlagAct('namesEn')),localStorage.setItem('names','namesEn')}} />
                 </div>
             </div>
             </>
@@ -93,8 +93,8 @@ const lang = useSelector(res=>res.flag)
 <p className='mini-nav-cat' onClick={()=>{navigate('/lady'),setOpen(e=>!e)}}>{lang==='namesGeo'?'ქალი':'Woman'}</p>
 </div>
 <div className='mini-flags'>
-<img src={Geo} className='nav-flag-img-mini' alt='admired' onClick={()=>dispatch(FlagAct('namesGeo'))}/>
-<img src={Eng} className='nav-flag-img-mini' alt='admired' onClick={()=>dispatch(FlagAct('namesEn'))}/>
+<img src={Geo} className='nav-flag-img-mini' alt='admired' onClick={()=>{dispatch(FlagAct('namesGeo')),localStorage.setItem('names','namesGeo')}}/>
+<img src={Eng} className='nav-flag-img-mini' alt='admired' onClick={()=>{dispatch(FlagAct('namesEn')),localStorage.setItem('names','namesEn')}}/>
 </div>
   {/* Mini Socials */}
 <div className='mini-nav-soc-box'>
