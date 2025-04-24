@@ -4,6 +4,7 @@ import axios from 'axios'
 import {Button} from '@mui/material'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useParams } from 'react-router-dom';
+import '../SCSS/Admin/admin.css'
 
 export default function AdminChange() {
   // States

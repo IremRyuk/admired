@@ -3,10 +3,13 @@ import axios from 'axios'
 import {Button} from '@mui/material'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
+import '../SCSS/Admin/admin.css'
+import { useSelector } from 'react-redux';
 
 
 export default function AddAdmin() {
     const [imagebase64,setImage] = useState(null)
+    const [showimage,setShowImage] = useState(null)
     const [namesGeo,setNamesGeo] = useState('')
     const [namesEng,setNamesEng] = useState('')
     const [titlesGeo,setTitleGeo] = useState('')
@@ -19,6 +22,7 @@ export default function AddAdmin() {
     // Image
     const setImages = (e)=> {
         setImage(e.target.files[0])
+        setShowImage(URL.createObjectURL(e.target.files[0]))
       }
 
 
@@ -52,11 +56,17 @@ console.log(newData)
            }
          })
          console.log(newData)
+         alert('Success')
         } catch (error) {
          console.log(error.response.data.mssg)
+         alert('Problem')
         }
      }
 }
+
+// Add Names
+const lang = useSelector(res=>res.flag)
+
 
 // Styles
 const VisuallyHiddenInput = styled('input')({
@@ -72,19 +82,23 @@ const VisuallyHiddenInput = styled('input')({
   })
       
   return (
-    <div>
-        <input type='text' placeholder="namesGeo" onChange={(e)=>{setNamesGeo(e.target.value)}} />
-        <input type='text' placeholder="namesEng" onChange={(e)=>{setNamesEng(e.target.value)}} />
-        <input type='text' placeholder="titleGeo" onChange={(e)=>{setTitleGeo(e.target.value)}} />
-        <input type='text' placeholder="titleEng" onChange={(e)=>{setTitleEng(e.target.value)}} />
-        <input type='text' placeholder="price" onChange={(e)=>{setPrice(e.target.value)}} />
-        <input type='text' placeholder="sale" onChange={(e)=>{setSale(e.target.value)}} />
+    <center>
+    <div className='additem'>
+      <p className='additem-name'>{lang==='namesGeo'?'პროდუქტის დამატება':'Add Product'}</p>
+        <input type='text' className='additem-text' placeholder="namesGeo" onChange={(e)=>{setNamesGeo(e.target.value)}} />
+        <input type='text' className='additem-text' placeholder="namesEng" onChange={(e)=>{setNamesEng(e.target.value)}} />
+        <input type='text' className='additem-text' placeholder="titleGeo" onChange={(e)=>{setTitleGeo(e.target.value)}} />
+        <input type='text' className='additem-text' placeholder="titleEng" onChange={(e)=>{setTitleEng(e.target.value)}} />
+        <input type='number' className='additem-text' placeholder="price" onChange={(e)=>{setPrice(e.target.value)}} />
+        <input type='number' className='additem-text' placeholder="sale" onChange={(e)=>{setSale(e.target.value)}} />
         <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
       Upload file
       <VisuallyHiddenInput type="file" onChange={(e)=>setImages(e)}/>
     </Button>
-        <button onClick={()=>Upload()}>button</button>
+    {showimage==null?<></>:<img src={showimage} className='additem-show-img'/>}
+    <button onClick={()=>Upload()} className='additem-btn'>Upload</button>
     </div>
+    </center>
   )
 }
 
