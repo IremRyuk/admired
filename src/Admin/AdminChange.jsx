@@ -5,10 +5,12 @@ import {Button} from '@mui/material'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useParams } from 'react-router-dom';
 import '../SCSS/Admin/admin.css'
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function AdminChange() {
   // States
   const [imagebase64,setImage] = useState(null)
+  const [showimage,setShowImage] = useState(null)
   const [namesGeo,setNamesGeo] = useState('')
   const [namesEng,setNamesEng] = useState('')
   const [titlesGeo,setTitleGeo] = useState('')
@@ -23,24 +25,18 @@ const {id} = useParams()
 const SingleData = async () => {
   const response = await fetch("https://admiredb-dn1c.onrender.com/usermenu/"+id)
   const json = await response.json()
-  console.log(json)
   setData(json)
 }
 useEffect(()=>{
   SingleData()
 },[])
 
-
-
-
-
-
-
-
   // Image
 const setImages = (e)=> {
   setImage(e.target.files[0])
+  setShowImage(URL.createObjectURL(e.target.files[0]))
 }
+
 
   // Styles
 const VisuallyHiddenInput = styled('input')({
@@ -54,6 +50,9 @@ const VisuallyHiddenInput = styled('input')({
   whiteSpace: 'nowrap',
   width: 1,
 })
+
+ 
+// Save Item
 const Save = async  () => {
   const base64 = await convertToBase64(imagebase64)
         console.log(base64)
@@ -79,30 +78,56 @@ const Save = async  () => {
 }
 
 
+// Delete Item
+const Remove = async () => {
+  const responce = await fetch('https://admiredb-dn1c.onrender.com/usermenu/'+id,{
+    method:'DELETE'
+})
+if(responce.ok){
+  alert('Deleted')
+  window.location.replace(
+    "http://localhost:5173/alladmin"
+  );
+}else{
+  alert('Problem')
+}
+}
+
+
   return (
     <div>
       {datas ===null
-      ?<></>
+      ?
+      <div className='circleProgress'>
+      <CircularProgress sx={{color:'white'}}/>
+     </div>
       :
-      <div>
-        <input type='text' value={namesGeo} placeholder={datas.nameGeo} onChange={(e)=>{setNamesGeo(e.target.value)}} />
-        <input type='text' value={namesEng} placeholder={datas.nameEng} onChange={(e)=>{setNamesEng(e.target.value)}} />
-        <input type='text' value={titlesGeo} placeholder={datas.titleGeo} onChange={(e)=>{setTitleGeo(e.target.value)}} />
-        <input type='text' value={titlesEng} placeholder={datas.titleEng} onChange={(e)=>{setTitleEng(e.target.value)}} />
-        <input type='number' value={prices} placeholder={datas.price} onChange={(e)=>{setPrice(e.target.value)}} />
-        <input type='number' value={sales} placeholder={datas.sale} onChange={(e)=>{setSale(e.target.value)}} />
-        <br />
-        <br />
-        
-        <br />
+      <center>
+      <div className='change-box'>
+        <p className='change-p'>სახელი</p>
+        <input type='text' className='additem-text' value={namesGeo} placeholder={datas.nameGeo} onChange={(e)=>{setNamesGeo(e.target.value)}} />
+        <p className='change-p'>Name</p>
+        <input type='text' className='additem-text' value={namesEng} placeholder={datas.nameEng} onChange={(e)=>{setNamesEng(e.target.value)}} />
+        <p className='change-p'>აღწერა</p>
+        <input type='text' className='additem-text' value={titlesGeo} placeholder={datas.titleGeo} onChange={(e)=>{setTitleGeo(e.target.value)}} />
+        <p className='change-p'>Title</p>
+        <input type='text' className='additem-text' value={titlesEng} placeholder={datas.titleEng} onChange={(e)=>{setTitleEng(e.target.value)}} />
+        <p className='change-p'>ფასი</p>
+        <input type='number' className='additem-text' value={prices} placeholder={datas.price} onChange={(e)=>{setPrice(e.target.value)}} />
+        <p className='change-p'>აქცია</p>
+        <input type='number' className='additem-text' value={sales} placeholder={datas.sale} onChange={(e)=>{setSale(e.target.value)}} />
         <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
       Upload file
       <VisuallyHiddenInput type="file" onChange={(e)=>setImages(e)}/>
     </Button>
-    <br />
-        <button onClick={()=>Save()}>Save</button>
-        <img src={datas.image} />
+    {showimage===null
+    ?<img src={datas.image} className='additem-show-img '/>
+    :<img src={showimage} className='additem-show-img '/>
+    }
+        <button onClick={()=>Save()} className='additem-btn'>Save</button>
+        <button onClick={()=>Remove()} className='additem-btn-r'>Delete</button>
     </div>
+    </center>
 }
     </div>
   )
