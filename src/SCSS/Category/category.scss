@@ -191,6 +191,42 @@ input::-webkit-inner-spin-button {
 
 
 
+// Gifts Page
+.gifts{
+    padding: 10px;
+    display: grid;
+    align-items: flex-start;
+    align-self: center;
+    justify-content: space-around;
+    grid-template-columns: 25% 25% 25% ;
+    width: 85vw;
+    min-height: 91vh;
+    padding-top: 5vh;
+    border: 1px solid red;
+}
+.gift-box{
+    width: 100%;
+    height: 250px;
+    transition: 0.2s;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 2.4mm;
+    background-color: rgba(151, 71, 158, 0);
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    &:hover{
+        scale: 1.05;
+    }
+}
+.gift-image{
+    width: 100%;
+    height: 80%;
+    border-top-left-radius: 2.4mm;
+    border-top-right-radius: 2.4mm;
+    object-fit: cover;
+}
+
 // Screen Minimize
 @media screen and (max-width:1200px) {
     .cat-page{
@@ -205,10 +241,21 @@ input::-webkit-inner-spin-button {
     .sendImage{
         width: 15%;
     }
+    // Gifts Page
+    .gifts{
+        padding: 10px;
+        grid-template-columns: 30% 30% 30%;
+        width: 85vw;
+    }
 }
 @media screen and (max-width:1000px) {
     .sendImage{
         width: 17%;
+    }
+    .gifts{
+        padding: 10px;
+        grid-template-columns: 40% 40%;
+        width: 85vw;
     }
 }
 @media screen and (max-width:800px) {
@@ -229,6 +276,16 @@ input::-webkit-inner-spin-button {
     .cat-col-date{
         width: 100%;
     }
+    .gifts{
+        padding: 10px;
+        grid-template-columns: 45% 45%;
+        width: 95vw;
+    }
+    .gift-box{
+        width: 100%;
+        height: 250px;
+        font-size: 22px;
+    }
 }
 @media screen and (max-width:600px) {
     .cat-btn-send{
@@ -238,6 +295,11 @@ input::-webkit-inner-spin-button {
     .sendImage{
         width: 20%;
     }
+    .gifts{
+        padding: 10px;
+        grid-template-columns: 70%;
+        width: 95vw;
+    }
 }
 @media screen and (max-width:500px) {
     .cat-btn-send{
@@ -245,6 +307,11 @@ input::-webkit-inner-spin-button {
     }
     .sendImage{
         width: 25%;
+    }
+    .gifts{
+        padding: 10px;
+        grid-template-columns: 80%;
+        width: 95vw;
     }
 }
 @media screen and (max-width:400px) {
@@ -259,5 +326,15 @@ input::-webkit-inner-spin-button {
     }
     .sendImage{
         width: 25%;
+    }
+    .gifts{
+        padding: 10px;
+        grid-template-columns: 100%;
+        width: 95vw;
+    }
+    .gift-box{
+        width: 100%;
+        height: 200px;
+        font-size: 22px;
     }
 }

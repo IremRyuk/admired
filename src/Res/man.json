@@ -1,25 +1,25 @@
 [
     {
         "id": 1,
-        "namesGeo": "შაურმა",
-        "namesEn":"Shawarma"
+        "namesGeo": "საათი",
+        "namesEn":"Watch"
     }, {
         "id": 2,
-        "namesGeo": "მწვადი",
-        "namesEn":"Barbecue"
+        "namesGeo": "ალკოჰოლი",
+        "namesEn":"Alcohol"
     }, {
         "id": 3,
-        "namesGeo": "სათვალე",
-        "namesEn":"Glasses"
+        "namesGeo": "აქსესუარები",
+        "namesEn":"Accessories"
     },
     {
         "id": 4,
-        "namesGeo": "სამკაული",
-        "namesEn":"Jewelry"
+        "namesGeo": "ტანსაცმელი",
+        "namesEn":"Clothes"
     }, {
         "id": 5,
         "namesGeo": "სუნამო",
-        "namesEn":"Parfume"
+        "namesEn":"Perfume"
     }, {
         "id": 6,
         "namesGeo": "სუვენირი",
@@ -27,15 +27,15 @@
     },
     {
         "id": 7,
-        "namesGeo": "საათი",
-        "namesEn":"Watch"
+        "namesGeo": "წიგნი",
+        "namesEn":"Book"
     }, {
         "id": 8,
-        "namesGeo": "ღვინო",
-        "namesEn":"Wine"
+        "namesGeo": "ვაუჩერი",
+        "namesEn":"Voucher"
     }, {
         "id": 9,
-        "namesGeo": "დუდუკი",
-        "namesEn":"Duduk"
+        "namesGeo": "...",
+        "namesEn":"..."
     }
 ]

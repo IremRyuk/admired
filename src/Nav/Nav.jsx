@@ -49,6 +49,7 @@ const lang = useSelector(res=>res.flag)
             <div className='nav-cat-box'>
             <p className='nav-cat' onClick={()=>navigate('/man')}>{lang==='namesGeo'?'კაცი':'Man'}</p>
             <p className='nav-cat' onClick={()=>navigate('/lady')}>{lang==='namesGeo'?'ქალი':'Woman'}</p>
+            <p className='nav-cat' onClick={()=>navigate('/gifts')}>{lang==='namesGeo'?'საჩუქარი':'Gift'}</p>
             </div>
             {/* Socials */}
             <div className='nav-soc-box'>
@@ -91,6 +92,7 @@ const lang = useSelector(res=>res.flag)
 <div className='mini-nav-cat-box'>
 <p className='mini-nav-cat' onClick={()=>{navigate('/man'),setOpen(e=>!e)}}>{lang==='namesGeo'?'კაცი':'Man'}</p>
 <p className='mini-nav-cat' onClick={()=>{navigate('/lady'),setOpen(e=>!e)}}>{lang==='namesGeo'?'ქალი':'Woman'}</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/gifts'),setOpen(e=>!e)}}>{lang==='namesGeo'?'საჩუქარი':'Gifts'}</p>
 </div>
 <div className='mini-flags'>
 <img src={Geo} className='nav-flag-img-mini' alt='admired' onClick={()=>{dispatch(FlagAct('namesGeo')),localStorage.setItem('names','namesGeo')}}/>

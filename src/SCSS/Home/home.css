@@ -146,6 +146,20 @@
   color: #c95080;
 }
 
+.badge {
+  position: fixed;
+  right: 3%;
+  bottom: 15%;
+  z-index: 999999999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
 @media screen and (max-width: 768px) {
   .slideCaption {
     font-size: 20px;

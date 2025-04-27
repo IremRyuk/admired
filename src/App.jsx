@@ -9,12 +9,15 @@ import AddAdmin from './Admin/AddAdmin'
 import AdminChange from './Admin/AdminChange'
 import AllAdmin from './Admin/AllAdmin'
 import Error from './Home/Error'
+import Gifts from './Category/Gifts'
+import Badges from './Home/Badges'
 
 function App() {
   return (
     <div className='App'>
     <Nav />
     <Chat />
+    <Badges />
     <Routes>
       {/* Error Page */}
       <Route path='*' element={<Error />} />
@@ -22,6 +25,7 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/lady' element={<Lady />} />
       <Route path='/man' element={<Man />} />
+      <Route path='/gifts' element={<Gifts />} />
       {/* Admin Pages */}
       <Route path='/create' element={<AddAdmin />} />
       <Route path='/change/:id' element={<AdminChange />} />
