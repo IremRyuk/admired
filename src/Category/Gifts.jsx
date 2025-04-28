@@ -23,16 +23,15 @@ useEffect(() => {
 }, [])
     
 // Get Language
-const lang = useSelector(res=>res.flag)
-const dataBadge = useSelector(res=>res.gifts)
+const lang = useSelector(res=>{return  res.flag})
+const dataBadge = useSelector(res=>{return  res.gifts })
 // Add Function 
 const AddFunct = (res) => {
-    if(dataBadge.includes(res)){
-        console.log('aris ukve',res)
-        
-    }else{
+    if(!dataBadge.includes(res)){
         dispatch(GiftsActAdd(res))
-        console.log(res)
+        console.log('daemata',res)
+    }else{
+        console.log('aris ukve',res)
     }
 }
   return (
@@ -45,9 +44,28 @@ const AddFunct = (res) => {
         :
         <div className='gifts'>
         {datas.map(res=>(
-            <div className='gift-box' key={res._id} onClick={()=>AddFunct(res)}>
+            <div className='gift-box' key={res._id}>
+                <div className='gift-box-items'>
                 <img src={res.image} className='gift-image' alt="admired" />
-                <p className='gift-name'>{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
+                <div className='gift-descr'>
+                <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':'Name: '}{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
+                <p className='gift-name'>{lang==='namesGeo'?'აღწერა: ':'Description: '}{lang==='namesGeo'?res.titleGeo:res.titleEng}</p>
+                {
+                    parseInt(res.sale) === 0
+                    ?
+                    <p className='gift-name'>{lang==='namesGeo'?'ფასი: ':'Price: '}{res.price}</p>
+                    :
+                    <div className='gift-sale'>{lang==='namesGeo'?'ფასი: ':'Price: '}
+                    &nbsp;
+                    <p style={{color:'red',textDecorationLine:'line-through'}}>{res.price}</p>
+                    <p> &nbsp;{res.sale}</p>
+                    </div>
+                }
+                </div>
+                <div className="add" onClick={()=>AddFunct(res)}>
+                {lang==='namesGeo'?"დამატება":"Add"}
+                </div>
+                </div>
             </div>
         ))}
         </div>

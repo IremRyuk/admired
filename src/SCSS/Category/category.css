@@ -206,11 +206,11 @@ input::-webkit-inner-spin-button {
   align-items: flex-start;
   align-self: center;
   justify-content: space-around;
-  grid-template-columns: 25% 25% 25%;
+  grid-template-columns: 40% 40%;
   width: 85vw;
+  gap: 20px;
   min-height: 91vh;
   padding-top: 5vh;
-  border: 1px solid red;
 }
 
 .gift-box {
@@ -222,20 +222,75 @@ input::-webkit-inner-spin-button {
   border-radius: 2.4mm;
   background-color: rgba(151, 71, 158, 0);
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
-.gift-box:hover {
-  scale: 1.05;
+
+.gift-box-items {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  position: relative;
 }
 
 .gift-image {
-  width: 100%;
-  height: 80%;
-  border-top-left-radius: 2.4mm;
-  border-top-right-radius: 2.4mm;
+  width: 40%;
+  height: 100%;
+  border-radius: 1.4mm;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.gift-descr {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.gift-sale {
+  padding-left: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  text-align: start;
+}
+
+.gift-name {
+  width: 100%;
+  text-align: start;
+  padding-left: 20px;
+}
+
+.gift-name-red {
+  text-decoration-line: line-through;
+  width: 100%;
+  color: red;
+  text-align: start;
+  padding-left: 20px;
+}
+
+.add {
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px 10px;
+  border-top-left-radius: 1.4mm;
+  border-bottom-left-radius: 1.4mm;
+  border-bottom-right-radius: 1.4mm;
+  background-color: white;
+  transition: 0.2s;
+  color: #ff607d;
+  cursor: pointer;
+}
+.add:hover {
+  scale: 1.05;
 }
 
 @media screen and (max-width: 1200px) {
@@ -253,7 +308,7 @@ input::-webkit-inner-spin-button {
   }
   .gifts {
     padding: 10px;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: 45% 45%;
     width: 85vw;
   }
 }
