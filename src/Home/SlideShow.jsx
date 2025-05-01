@@ -12,18 +12,22 @@ export default function SlideShow() {
     const data = [
         {captionGeo:"ყოველი ნივთი იქმნება პერსონალურად",
          captionEng:"Every item is made personally",
+         captionRus:"Каждый предмет изготавливается лично",
          img:First
         },
         {captionGeo:"ჩვენ ვქნით საჩუქრებს, რომლებიც რჩება დაუვიწყარ მოგონებებად",
           captionEng:"Every item is made personally",
+          captionRus:"Мы делаем подарки, которые остаются незабываемыми воспоминаниями.",
             img:Second
         },
         {captionGeo:"საჩუქრებს",
           captionEng:"Every item is made personally",
+          captionRus:"lala",
             img:Third
         },
         {captionGeo:"რჩება",
           captionEng:"Every item is made personally",
+          captionRus:"lala",
             img:Forth
         },
     ]
@@ -49,7 +53,7 @@ export default function SlideShow() {
         {data.map(res=>(
             <SwiperSlide className='slidePage' key={res.caption}>
                 <img src={res.img} alt={res.caption} className='slideImg'/>
-                <p className='slideCaption'>{lang==='namesGeo'?res.captionGeo:res.captionEng}</p>
+                <p className='slideCaption'>{lang==='namesGeo'?res.captionGeo:lang==='namesRus'?res.captionRus:res.captionEng}</p>
             </SwiperSlide>
         ))}
     </Swiper>

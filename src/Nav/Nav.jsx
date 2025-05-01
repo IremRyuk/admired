@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Menu from '../Photoes/menu.png'
 import Geo from '../Photoes/flag/geo.webp'
 import Eng from '../Photoes/flag/eng.webp'
+import Rus from '../Photoes/flag/rus.webp'
 import {FlagAct} from '../Redux/Action/FlagAct'
 
 export default function Nav(){
@@ -47,9 +48,9 @@ const lang = useSelector(res=>res.flag)
             <>
             {/* Categories */}
             <div className='nav-cat-box'>
-            <p className='nav-cat' onClick={()=>navigate('/man')}>{lang==='namesGeo'?'კაცი':'Man'}</p>
-            <p className='nav-cat' onClick={()=>navigate('/lady')}>{lang==='namesGeo'?'ქალი':'Woman'}</p>
-            <p className='nav-cat' onClick={()=>navigate('/gifts')}>{lang==='namesGeo'?'საჩუქარი':'Gift'}</p>
+            <p className='nav-cat' onClick={()=>navigate('/man')}>{lang==='namesGeo'?'კაცი':lang==='namesRus'?"Мужчина":'Man'}</p>
+            <p className='nav-cat' onClick={()=>navigate('/lady')}>{lang==='namesGeo'?'ქალი':lang==='namesRus'?"Женщина":'Woman'}</p>
+            <p className='nav-cat' onClick={()=>navigate('/gifts')}>{lang==='namesGeo'?'საჩუქარი':lang==='namesRus'?"Подарок":'Gift'}</p>
             </div>
             {/* Socials */}
             <div className='nav-soc-box'>
@@ -59,10 +60,11 @@ const lang = useSelector(res=>res.flag)
             </div>
 
             <div className='nav-flag'>
-                <img src={lang==='namesGeo'?Geo:Eng} alt='admired' className='nav-flag-current'/>
+                <img src={lang==='namesGeo'?Geo:lang==='namesRus'?Rus:Eng} alt='admired' className='nav-flag-current'/>
                 <div className='nav-flag-menu'>
                 <img src={Geo} className='nav-flag-img' alt='admired' onClick={()=>{dispatch(FlagAct('namesGeo')),localStorage.setItem('names','namesGeo')}} />
                 <img src={Eng} className='nav-flag-img' alt='admired' onClick={()=>{dispatch(FlagAct('namesEn')),localStorage.setItem('names','namesEn')}} />
+                <img src={Rus} className='nav-flag-img' alt='admired' onClick={()=>{dispatch(FlagAct('namesRus')),localStorage.setItem('names','namesRus')}} />
                 </div>
             </div>
             </>
@@ -90,13 +92,14 @@ const lang = useSelector(res=>res.flag)
 </div>
    {/* Mini Categories */}
 <div className='mini-nav-cat-box'>
-<p className='mini-nav-cat' onClick={()=>{navigate('/man'),setOpen(e=>!e)}}>{lang==='namesGeo'?'კაცი':'Man'}</p>
-<p className='mini-nav-cat' onClick={()=>{navigate('/lady'),setOpen(e=>!e)}}>{lang==='namesGeo'?'ქალი':'Woman'}</p>
-<p className='mini-nav-cat' onClick={()=>{navigate('/gifts'),setOpen(e=>!e)}}>{lang==='namesGeo'?'საჩუქარი':'Gifts'}</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/man'),setOpen(e=>!e)}}>{lang==='namesGeo'?'კაცი':lang==='namesRus'?"Мужчина":'Man'}</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/lady'),setOpen(e=>!e)}}>{lang==='namesGeo'?'ქალი':lang==='namesRus'?"Женщина":'Woman'}</p>
+<p className='mini-nav-cat' onClick={()=>{navigate('/gifts'),setOpen(e=>!e)}}>{lang==='namesGeo'?'საჩუქარი':lang==='namesRus'?"Подарок":'Gift'}</p>
 </div>
 <div className='mini-flags'>
 <img src={Geo} className='nav-flag-img-mini' alt='admired' onClick={()=>{dispatch(FlagAct('namesGeo')),localStorage.setItem('names','namesGeo')}}/>
 <img src={Eng} className='nav-flag-img-mini' alt='admired' onClick={()=>{dispatch(FlagAct('namesEn')),localStorage.setItem('names','namesEn')}}/>
+<img src={Rus} className='nav-flag-img-mini' alt='admired' onClick={()=>{dispatch(FlagAct('namesRus')),localStorage.setItem('names','namesRus')}}/>
 </div>
   {/* Mini Socials */}
 <div className='mini-nav-soc-box'>

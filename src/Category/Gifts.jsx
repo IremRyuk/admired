@@ -48,14 +48,14 @@ const AddFunct = (res) => {
                 <div className='gift-box-items'>
                 <img src={res.image} className='gift-image' alt="admired" />
                 <div className='gift-descr'>
-                <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':'Name: '}{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
-                <p className='gift-name'>{lang==='namesGeo'?'აღწერა: ':'Description: '}{lang==='namesGeo'?res.titleGeo:res.titleEng}</p>
+                <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':lang==='namesRus'?"Имя: ":'Name: '}{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
+                <p className='gift-name'>{lang==='namesGeo'?'აღწერა: ':lang==='namesRus'?"Описание: ":'Description: '}{lang==='namesGeo'?res.titleGeo:res.titleEng}</p>
                 {
                     parseInt(res.sale) === 0
                     ?
-                    <p className='gift-name'>{lang==='namesGeo'?'ფასი: ':'Price: '}{res.price}</p>
+                    <p className='gift-name'>{lang==='namesGeo'?'ფასი: ':lang==='namesRus'?"Цена: ":'Price: '}{res.price}</p>
                     :
-                    <div className='gift-sale'>{lang==='namesGeo'?'ფასი: ':'Price: '}
+                    <div className='gift-sale'>{lang==='namesGeo'?'ფასი: ':lang==='namesRus'?"Цена: ":'Price: '}
                     &nbsp;
                     <p style={{color:'red',textDecorationLine:'line-through'}}>{res.price}</p>
                     <p> &nbsp;{res.sale}</p>
@@ -63,7 +63,7 @@ const AddFunct = (res) => {
                 }
                 </div>
                 <div className="add" onClick={()=>AddFunct(res)}>
-                {lang==='namesGeo'?"დამატება":"Add"}
+                {lang==='namesGeo'?"დამატება":lang==='namesRus'?"Добавлять ":"Add"}
                 </div>
                 </div>
             </div>

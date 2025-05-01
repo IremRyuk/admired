@@ -31,7 +31,7 @@ const navigate = useNavigate()
         {datas.map(res=>(
             <div className='item-box' key={res._id} onClick={()=>{navigate(`/change/${res._id}`)}}>
                 <img src={res.image} className='item-box-img'/>
-                <p>{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
+                <p>{lang==='namesGeo'?res.nameGeo:lang==='namesRus'?res.nameRus:res.nameEng}</p>
             </div>
         ))}
         </div>}

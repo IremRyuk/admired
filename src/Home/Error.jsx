@@ -9,12 +9,14 @@ export default function Error() {
     <p>
       {lang==='namesGeo'
       ?'შეცდომა, დაბრუნდით მთავარ გვერდზე'
+      :lang==='namesRus'?"Ошибка, вернуться на главную страницу"
       :'Error wrong page'
       }
     </p>
     <button className='mainPage' onClick={()=>window.location.href = 'http://localhost:5173'}>
     {lang==='namesGeo'
       ?'მთავარი გვერდი'
+      :lang==='namesRus'?"Домашняя страница"
       :'Main Page'
       }
     </button>
