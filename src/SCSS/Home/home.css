@@ -163,8 +163,8 @@
 }
 
 .badge-empty {
-  width: 100vw;
-  min-height: 91vh;
+  width: 80vw;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,10 +194,15 @@
 }
 
 .badge-page {
-  width: 85vw;
-  min-height: 91vh;
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  background-color: silver;
+  overflow-y: scroll;
+  width: 40vw;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 60%;
+  grid-template-columns: 70%;
   align-items: flex-start;
   align-self: center;
   justify-content: center;

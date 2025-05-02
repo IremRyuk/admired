@@ -7,9 +7,16 @@ import { GiftsActAdd } from '../Redux/Action/GiftsAct';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import SearchIcon from '@mui/icons-material/Search';
 import { DataGiftsAct } from '../Redux/Action/DataGiftsAct';
+import Badges from '../Home/Badges';
 
 export default function Gifts() {
+    // Get Language
+const lang = useSelector(res=>{return  res.flag})
+const dataBadge = useSelector(res=>{return  res.gifts })
+const dataGifts = useSelector(res=>{return res.dataGifts})
+// States
     const [search,setSearch] = useState('')
+    const [arrowTitle,setArrowTitle] = useState(false)
     // Redux
     const dispatch = useDispatch()
     // Load Data
@@ -27,18 +34,13 @@ useEffect(() => {
     LoadData()
 }, [])
     
-// Get Language
-const lang = useSelector(res=>{return  res.flag})
-const dataBadge = useSelector(res=>{return  res.gifts })
-const dataGifts = useSelector(res=>{return res.dataGifts})
-console.log(dataGifts)
 // Add Function 
 const AddFunct = (res) => {
     if(!dataBadge.includes(res)){
         dispatch(GiftsActAdd(res))
-        console.log('daemata',res)
+        console.log('added',res)
     }else{
-        console.log('aris ukve',res)
+        console.log('exists',res)
     }
 }
 // Search Function
@@ -55,8 +57,15 @@ const SearchFunc = () => {
     }
 }
 const SearchArrows = () => {
-    const arrows = dataGifts.sort((a,b)=>{return parseFloat(a.price) - parseFloat(b.price)})
-    setDatas([...arrows])
+    setArrowTitle(e=>!e)
+    if(arrowTitle){
+        const arrows = dataGifts.sort((a,b)=>{return parseFloat(a.price) - parseFloat(b.price)})
+        setDatas([...arrows])
+    }else{
+        const arrows = dataGifts.sort((a,b)=>{return parseFloat(b.price) - parseFloat(a.price)})
+        setDatas([...arrows])
+    }
+    
 }
   return (
     <center>
@@ -83,7 +92,11 @@ const SearchArrows = () => {
         </div>
         <div className='filter-arrows' onClick={()=>SearchArrows()}>
             <ImportExportIcon fontSize='large'/>
-            {lang==='namesGeo'?"ფასი ზრდადი":lang==='namesRus'?"Цена растет":"Price increasing..."}
+            {!arrowTitle
+            ?<>{lang==='namesGeo'?"ფასი კლებადი":lang==='namesRus'?"Цена снижается":"Price decreasing"}</>
+            :<>{lang==='namesGeo'?"ფასი ზრდადი":lang==='namesRus'?"Цена растет":"Price increasing"}</>}
+            
+            
         </div>
     </div>
         <div className='gifts'>
@@ -118,6 +131,7 @@ const SearchArrows = () => {
         </div>
     </>
         }
+    <Badges />
     </center>
   )
 }

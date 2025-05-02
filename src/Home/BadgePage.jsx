@@ -2,10 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../SCSS/Home/home.css'
 import { GiftsActRemove } from '../Redux/Action/GiftsAct';
-import { useNavigate } from 'react-router-dom';
 
 export default function BadgePage() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
     const datas = useSelector(res=>res.gifts)
     const dispatch = useDispatch()
     // Language
@@ -16,7 +15,6 @@ export default function BadgePage() {
       {datas.length == 0
       ?<div className='badge-empty'>
         <p className='empty-text'>{lang==='namesGeo'?'გთხოვთ, აირჩიოთ საჩუქრები':lang==='namesRus'?"Пожалуйста, выберите подарки":'Please, Select Gifts'}</p>
-        <p className='empty-link' onClick={()=>{navigate('/gifts')}}>{lang==='namesGeo'?'საჩუქრები':lang==='namesRus'?"Подарки":'Gifts'}</p>
         </div>
       :<div className='badge-page'>
       {datas.map(res=>(

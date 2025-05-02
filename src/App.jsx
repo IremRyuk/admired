@@ -11,7 +11,6 @@ import AllAdmin from './Admin/AllAdmin'
 import Error from './Home/Error'
 import Gifts from './Category/Gifts'
 import Badges from './Home/Badges'
-import BadgePage from './Home/BadgePage'
 
 function App() {
   return (
@@ -27,7 +26,6 @@ function App() {
       <Route path='/lady' element={<Lady />} />
       <Route path='/man' element={<Man />} />
       <Route path='/gifts' element={<Gifts />} />
-      <Route path='/chosen' element={<BadgePage />} />
       {/* Admin Pages */}
       <Route path='/create' element={<AddAdmin />} />
       <Route path='/change/:id' element={<AdminChange />} />

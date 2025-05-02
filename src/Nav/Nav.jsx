@@ -13,6 +13,8 @@ import Eng from '../Photoes/flag/eng.webp'
 import Rus from '../Photoes/flag/rus.webp'
 import {FlagAct} from '../Redux/Action/FlagAct'
 
+import { DataGiftsAct } from '../Redux/Action/DataGiftsAct'
+
 export default function Nav(){
     const navigate = useNavigate()
     // Mini Screens
