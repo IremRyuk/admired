@@ -192,28 +192,71 @@ input::-webkit-inner-spin-button {
 
 
 // Gifts Page
+.gifts-filter{
+    margin-top: 5vh;
+    width: 70vw;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-box{
+    cursor: pointer;
+    width: 7%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 2.4mm;
+    transition: 0.2s;
+    &:hover{
+        background-color: white;
+        color: #d87c8d;
+    }
+}
+.filter-text{
+    width: 70%;
+    height: 100%;
+    font-size: 25px;
+    border-radius: 2.4mm;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+.filter-arrows{
+    cursor: pointer;
+    width: 20%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
 .gifts{
     padding: 10px;
     display: grid;
     align-items: flex-start;
     align-self: center;
-    justify-content: space-around;
-    grid-template-columns: 40% 40%;
+    justify-content: space-evenly;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: auto;
     width: 85vw;
-    gap: 20px;
     min-height: 91vh;
-    padding-top: 5vh;
 }
 .gift-box{
+    margin-top: 50px;
     width: 100%;
     height: 250px;
     transition: 0.2s;
     cursor: pointer;
     border: 2px solid white;
     border-radius: 2.4mm;
-    background-color: rgba(151, 71, 158, 0);
+    background-color: rgb(153, 153, 153);
     color: white;
-    font-size: 20px;
+    font-size: large;
     font-weight: bold;
 }
 .gift-box-items{

@@ -4,8 +4,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import '../SCSS/Category/category.css'
 import { GiftsActAdd } from '../Redux/Action/GiftsAct';
+import ImportExportIcon from '@mui/icons-material/ImportExport';
+import SearchIcon from '@mui/icons-material/Search';
+import { DataGiftsAct } from '../Redux/Action/DataGiftsAct';
 
 export default function Gifts() {
+    const [search,setSearch] = useState('')
     // Redux
     const dispatch = useDispatch()
     // Load Data
@@ -15,6 +19,7 @@ const [datas, setDatas] = useState(null)
 const LoadData = async () => {
     const response = await fetch("https://admiredb-dn1c.onrender.com/usermenu/myjobs")
     const json = await response.json()
+    dispatch(DataGiftsAct(json))
     setDatas(json)
 }
 
@@ -25,6 +30,8 @@ useEffect(() => {
 // Get Language
 const lang = useSelector(res=>{return  res.flag})
 const dataBadge = useSelector(res=>{return  res.gifts })
+const dataGifts = useSelector(res=>{return res.dataGifts})
+console.log(dataGifts)
 // Add Function 
 const AddFunct = (res) => {
     if(!dataBadge.includes(res)){
@@ -34,6 +41,23 @@ const AddFunct = (res) => {
         console.log('aris ukve',res)
     }
 }
+// Search Function
+const SearchFunc = () => {
+    if(lang==='namesGeo'){
+        const newData = dataGifts.filter(res=>res.nameGeo.toLowerCase().includes(search.toLowerCase()))
+        setDatas(newData)
+    }else if(lang==='namesEn'){
+        const newData = dataGifts.filter(res=>res.nameEng.toLowerCase().includes(search.toLowerCase()))    
+        setDatas(newData)
+    }else if(lang==='namesRus'){
+        const newData = dataGifts.filter(res=>res.nameEng.toLowerCase().includes(search.toLowerCase()))    
+        setDatas(newData)
+    }
+}
+const SearchArrows = () => {
+    const arrows = dataGifts.sort((a,b)=>{return parseFloat(a.price) - parseFloat(b.price)})
+    setDatas([...arrows])
+}
   return (
     <center>
         {datas==null
@@ -42,7 +66,30 @@ const AddFunct = (res) => {
         <CircularProgress sx={{color:'white'}}/>
        </div>
         :
+        <>
+
+                    {/* Filter */}
+
+    <div className='gifts-filter'>
+        <input 
+        type='text' 
+        placeholder={lang==='namesGeo'?"ძებნა...":lang==='namesRus'?"поиск...":"search..."}
+        value={search}
+        onChange={(e)=>setSearch(e.target.value)}
+        className='filter-text'
+        />
+        <div className='search-box' onClick={()=>SearchFunc()}>
+            <SearchIcon fontSize='large'/>
+        </div>
+        <div className='filter-arrows' onClick={()=>SearchArrows()}>
+            <ImportExportIcon fontSize='large'/>
+            {lang==='namesGeo'?"ფასი ზრდადი":lang==='namesRus'?"Цена растет":"Price increasing..."}
+        </div>
+    </div>
         <div className='gifts'>
+
+            {/* Data */}
+
         {datas.map(res=>(
             <div className='gift-box' key={res._id}>
                 <div className='gift-box-items'>
@@ -69,6 +116,7 @@ const AddFunct = (res) => {
             </div>
         ))}
         </div>
+    </>
         }
     </center>
   )

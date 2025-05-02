@@ -2,10 +2,10 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import First from '../Photoes/testslide/1.png'
-import Second from '../Photoes/testslide/2.jpg'
-import Third from '../Photoes/testslide/3.webp'
-import Forth from '../Photoes/testslide/4.jpg'
+import First from '../Photoes/pexels/3.jpg'
+import Second from '../Photoes/pexels/4.jpg'
+import Third from '../Photoes/pexels/5.jpg'
+import Forth from '../Photoes/pexels/6.jpg'
 import { useSelector } from 'react-redux';
 
 export default function SlideShow() {
