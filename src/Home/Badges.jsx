@@ -14,7 +14,7 @@ export default function Badges() {
         const lang = useSelector(res=>res.flag)
         useEffect(()=>{
 if(datas.length <= 0){
-  setModal(e=>e === false)
+  setModal(false)
 }
         },[datas])
   return (
@@ -49,7 +49,6 @@ if(datas.length <= 0){
                 <img src={res.image} className='gift-image' alt="admired" />
                 <div className='gift-descr'>
                 <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':lang==='namesRus'?"Имя: ":'Name: '}{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
-                <p className='gift-name'>{lang==='namesGeo'?'აღწერა: ':lang==='namesRus'?"Описание: ":'Description: '}{lang==='namesGeo'?res.titleGeo:res.titleEng}</p>
                 {
                     parseInt(res.sale) === 0
                     ?

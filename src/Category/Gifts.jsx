@@ -14,6 +14,7 @@ export default function Gifts() {
 const lang = useSelector(res=>{return  res.flag})
 const dataBadge = useSelector(res=>{return  res.gifts })
 const dataGifts = useSelector(res=>{return res.dataGifts})
+const widthW = useSelector(res=>res.width)
 // States
     const [search,setSearch] = useState('')
     const [arrowTitle,setArrowTitle] = useState(false)
@@ -92,11 +93,14 @@ const SearchArrows = () => {
         </div>
         <div className='filter-arrows' onClick={()=>SearchArrows()}>
             <ImportExportIcon fontSize='large'/>
+            {widthW <= 550
+            ?null
+            :<>
             {!arrowTitle
             ?<>{lang==='namesGeo'?"ფასი კლებადი":lang==='namesRus'?"Цена снижается":"Price decreasing"}</>
             :<>{lang==='namesGeo'?"ფასი ზრდადი":lang==='namesRus'?"Цена растет":"Price increasing"}</>}
-            
-            
+            </>
+            }      
         </div>
     </div>
         <div className='gifts'>
@@ -108,8 +112,8 @@ const SearchArrows = () => {
                 <div className='gift-box-items'>
                 <img src={res.image} className='gift-image' alt="admired" />
                 <div className='gift-descr'>
-                <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':lang==='namesRus'?"Имя: ":'Name: '}{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
-                <p className='gift-name'>{lang==='namesGeo'?'აღწერა: ':lang==='namesRus'?"Описание: ":'Description: '}{lang==='namesGeo'?res.titleGeo:res.titleEng}</p>
+                <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':lang==='namesRus'?"Имя: ":'Name: '}{lang==='namesGeo'?res.nameGeo:lang==='namesRus'?res.nameRus:res.nameEng}</p>
+                <p className='gift-name'>{lang==='namesGeo'?'აღწერა: ':lang==='namesRus'?"Описание: ":'Description: '}{lang==='namesGeo'?res.titleGeo:lang==='namesRus'?res.nameRus:res.titleEng}</p>
                 {
                     parseInt(res.sale) === 0
                     ?

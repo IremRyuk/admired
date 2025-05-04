@@ -245,6 +245,9 @@ input::-webkit-inner-spin-button {
     grid-template-rows: auto;
     width: 85vw;
     min-height: 91vh;
+    background-color: #e2e2e2;
+    margin-top: 50px;
+    border-radius: 2.4mm;
 }
 .gift-box{
     margin-top: 50px;
@@ -254,8 +257,8 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     border: 2px solid white;
     border-radius: 2.4mm;
-    background-color: rgb(153, 153, 153);
-    color: white;
+    background-color: white;
+    color: #ff607d;
     font-size: large;
     font-weight: bold;
 }
@@ -337,6 +340,11 @@ input::-webkit-inner-spin-button {
         grid-template-columns: 45% 45%;;
         width: 85vw;
     }
+    .gifts-filter{
+        margin-top: 5vh;
+        width: 80vw;
+        height: 40px;
+    }
 }
 @media screen and (max-width:1000px) {
     .sendImage{
@@ -346,6 +354,21 @@ input::-webkit-inner-spin-button {
         padding: 10px;
         grid-template-columns: 40% 40%;
         width: 85vw;
+    }
+    .gift-box{
+        margin-top: 50px;
+        width: 100%;
+        height: 200px;
+    }
+    .filter-text{
+        width: 70%;
+        height: 100%;
+        font-size: 22px;
+        padding-left: 10px;
+    }
+    .filter-arrows{
+        width: 20%;
+        font-size: 20px;
     }
 }
 @media screen and (max-width:800px) {
@@ -369,12 +392,29 @@ input::-webkit-inner-spin-button {
     .gifts{
         padding: 10px;
         grid-template-columns: 45% 45%;
+        justify-content: space-around;
+        margin-top: 25px;
         width: 95vw;
     }
     .gift-box{
         width: 100%;
-        height: 250px;
+        height: 200px;
+        font-size: 20px;
+    }
+    .gifts-filter{
+        margin-top: 5vh;
+        width: 95vw;
+        height: 40px;
+    }
+    .filter-text{
+        width: 55%;
+        height: 100%;
         font-size: 22px;
+        padding-left: 10px;
+    }
+    .filter-arrows{
+        width: 35%;
+        font-size: 20px;
     }
 }
 @media screen and (max-width:600px) {
@@ -387,8 +427,28 @@ input::-webkit-inner-spin-button {
     }
     .gifts{
         padding: 10px;
-        grid-template-columns: 70%;
+        grid-template-columns: 80%;
         width: 95vw;
+    }
+    .gift-box {
+        width: 100%;
+        height: 250px;
+        font-size: 20px;
+    }
+}
+@media screen and (max-width:550px) {
+    .filter-text{
+        width: 75%;
+        height: 100%;
+        font-size: 22px;
+        padding-left: 10px;
+    }
+    .filter-arrows{
+        width: 10%;
+        font-size: 15px;
+    }
+    .search-box{
+        width: 10%;
     }
 }
 @media screen and (max-width:500px) {
@@ -400,8 +460,13 @@ input::-webkit-inner-spin-button {
     }
     .gifts{
         padding: 10px;
-        grid-template-columns: 80%;
+        grid-template-columns: 85%;
         width: 95vw;
+    }
+    .gift-box {
+        width: 100%;
+        height: 200px;
+        font-size: 20px;
     }
 }
 @media screen and (max-width:400px) {

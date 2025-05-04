@@ -195,25 +195,24 @@
 
 .badge-page {
   position: fixed;
-  top: 0%;
-  right: 0%;
+  top: 0;
+  right: 0;
   background-color: silver;
   overflow-y: scroll;
   width: 40vw;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 70%;
-  align-items: flex-start;
-  align-self: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   gap: 50px;
   padding-top: 50px;
   padding-bottom: 100px;
 }
 
 .badge-box {
-  width: 100%;
-  height: 350px;
+  width: 85%;
+  height: 300px;
   color: white;
   font-size: 25px;
   border-radius: 2.4mm;
@@ -221,6 +220,11 @@
   position: relative;
 }
 
+@media screen and (max-width: 1200px) {
+  .badge-page {
+    width: 45vw;
+  }
+}
 @media screen and (max-width: 1000px) {
   .badge-page {
     width: 85vw;
@@ -229,9 +233,12 @@
     gap: 50px;
   }
   .badge-box {
-    width: 100%;
+    width: 85%;
     height: 300px;
-    font-size: 25px;
+    font-size: 22px;
+  }
+  .badge-page {
+    width: 50vw;
   }
 }
 @media screen and (max-width: 768px) {
@@ -245,23 +252,20 @@
     gap: 50px;
   }
   .badge-box {
-    width: 100%;
+    width: 90%;
     height: 250px;
-    font-size: 20px;
+    font-size: 22px;
+  }
+  .badge-page {
+    width: 60vw;
   }
 }
 @media screen and (max-width: 550px) {
   .slideCaption {
     font-size: 20px;
   }
-  .badge-page {
-    width: 95vw;
-    min-height: 91vh;
-    grid-template-columns: 90%;
-    gap: 20px;
-  }
   .badge-box {
-    width: 100%;
+    width: 90%;
     height: 200px;
     font-size: 17px;
   }
@@ -270,6 +274,9 @@
   }
   .empty-text {
     font-size: 31px;
+  }
+  .badge-page {
+    width: 80vw;
   }
 }
 @media screen and (max-width: 425px) {
