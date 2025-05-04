@@ -33,7 +33,7 @@ if(datas.length <= 0){
     }
 
     {/* Drawer */}
-    {!modal
+    {modal == false
         ?
         <></>
         :
