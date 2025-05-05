@@ -58,12 +58,13 @@
   width: 50%;
   height: 100%;
   display: flex;
-  gap: 50px;
   justify-content: center;
   align-items: center;
   font-family: "Pinyon Script", cursive;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 27px;
+  animation: 0.2s AnimeCategories linear;
+  gap: 50px;
 }
 
 .nav-cat {
@@ -95,7 +96,7 @@
 .nav-flag-current {
   -o-object-fit: contain;
      object-fit: contain;
-  width: 40%;
+  width: 35%;
   height: -moz-min-content;
   height: min-content;
 }
@@ -122,7 +123,7 @@
 .nav-flag-img {
   -o-object-fit: contain;
      object-fit: contain;
-  width: 50%;
+  width: 45%;
   height: 100%;
   cursor: pointer;
 }
@@ -212,6 +213,14 @@
   justify-content: space-around;
 }
 
+@keyframes AnimeCategories {
+  0% {
+    gap: 70px;
+  }
+  100% {
+    gap: 50px;
+  }
+}
 @media screen and (max-width: 768px) {
   .nav-box {
     width: 95%;

@@ -62,7 +62,7 @@ if(datas.length <= 0){
                 }
                 </div>
 </div>
-<div className="add" onClick={()=>dispatch(GiftsActRemove(res._id))}>
+<div className="add add-gift" onClick={()=>dispatch(GiftsActRemove(res._id))}>
                 {lang==='namesGeo'?"ამოშლა":lang==='namesRus'?"Добавлять ":"Remove"}
                 </div>
 

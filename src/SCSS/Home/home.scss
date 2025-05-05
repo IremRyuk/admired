@@ -188,7 +188,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    background-color: silver;
+    background-color: rgb(255, 255, 255);
     overflow-y: scroll;
     width: 40vw;
     height: 100vh;
@@ -203,10 +203,10 @@
 .badge-box {
     width: 85%;
     height: 300px;
-    color: white;
+    color: #292929;
     font-size: 25px;
     border-radius: 2.4mm;
-    box-shadow: 0 0 10px white;
+    box-shadow: 0px 0px 10px rgb(201, 160, 160);
     position: relative;
 }
 

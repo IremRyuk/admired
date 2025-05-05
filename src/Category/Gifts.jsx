@@ -48,13 +48,25 @@ const AddFunct = (res) => {
 const SearchFunc = () => {
     if(lang==='namesGeo'){
         const newData = dataGifts.filter(res=>res.nameGeo.toLowerCase().includes(search.toLowerCase()))
-        setDatas(newData)
+        if(newData.length>0){
+            setDatas(newData)    
+        }else{
+            setDatas('error')
+        }
     }else if(lang==='namesEn'){
         const newData = dataGifts.filter(res=>res.nameEng.toLowerCase().includes(search.toLowerCase()))    
-        setDatas(newData)
+        if(newData.length>0){
+            setDatas(newData)    
+        }else{
+            setDatas('error')
+        }
     }else if(lang==='namesRus'){
         const newData = dataGifts.filter(res=>res.nameEng.toLowerCase().includes(search.toLowerCase()))    
-        setDatas(newData)
+        if(newData.length>0){
+            setDatas(newData)    
+        }else{
+            setDatas('error')
+        }
     }
 }
 const SearchArrows = () => {
@@ -65,9 +77,24 @@ const SearchArrows = () => {
     }else{
         const arrows = dataGifts.sort((a,b)=>{return parseFloat(b.price) - parseFloat(a.price)})
         setDatas([...arrows])
-    }
-    
+    }   
 }
+const ShowAll = () => {
+    if(lang==='namesGeo'){
+        const newData = dataGifts.filter(res=>res)
+        setDatas(newData)
+        setSearch('')
+    }else if(lang==='namesEn'){
+        const newData = dataGifts.filter(res=>res)    
+        setDatas(newData)
+        setSearch('')
+    }else if(lang==='namesRus'){
+        const newData = dataGifts.filter(res=>res)    
+        setDatas(newData)
+        setSearch('')
+    }
+}
+
   return (
     <center>
         {datas==null
@@ -103,10 +130,14 @@ const SearchArrows = () => {
             }      
         </div>
     </div>
-        <div className='gifts'>
-
             {/* Data */}
-
+        {datas === 'error'
+        ?<div className='gift-error'>
+            <p className='gift-error-text'>Nothing Found</p>
+            <button className='show-all' onClick={()=>ShowAll()}>Show All</button>
+        </div>
+        :<>
+        <div className='gifts'>
         {datas.map(res=>(
             <div className='gift-box' key={res._id}>
                 <div className='gift-box-items'>
@@ -133,6 +164,7 @@ const SearchArrows = () => {
             </div>
         ))}
         </div>
+        </>}
     </>
         }
     <Badges />
