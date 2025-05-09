@@ -2,40 +2,49 @@
     {
         "id": 1,
         "namesGeo": "საათი",
+        "namesRus":"Часы",
         "namesEn":"Watch"
     }, {
         "id": 2,
         "namesGeo": "ალკოჰოლი",
+        "namesRus":"Алкоголь",
         "namesEn":"Alcohol"
     }, {
         "id": 3,
         "namesGeo": "აქსესუარები",
+        "namesRus":"Аксессуары",
         "namesEn":"Accessories"
     },
     {
         "id": 4,
         "namesGeo": "ტანსაცმელი",
+        "namesRus":"Одежда",
         "namesEn":"Clothes"
     }, {
         "id": 5,
         "namesGeo": "სუნამო",
+        "namesRus":"Духи",
         "namesEn":"Perfume"
     }, {
         "id": 6,
         "namesGeo": "სუვენირი",
+        "namesRus":"Сувенир",
         "namesEn":"Souvenir"
     },
     {
         "id": 7,
         "namesGeo": "წიგნი",
+        "namesRus":"Книга",
         "namesEn":"Book"
     }, {
         "id": 8,
         "namesGeo": "ვაუჩერი",
+        "namesRus":"Ваучер",
         "namesEn":"Voucher"
     }, {
         "id": 9,
         "namesGeo": "სათამაშო",
+        "namesRus":"Игрушка",
         "namesEn":"Toy"
     }
 ]

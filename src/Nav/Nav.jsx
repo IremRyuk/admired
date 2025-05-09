@@ -13,8 +13,6 @@ import Eng from '../Photoes/flag/eng.webp'
 import Rus from '../Photoes/flag/rus.webp'
 import {FlagAct} from '../Redux/Action/FlagAct'
 
-import { DataGiftsAct } from '../Redux/Action/DataGiftsAct'
-
 export default function Nav(){
     const navigate = useNavigate()
     // Mini Screens
@@ -56,9 +54,9 @@ const lang = useSelector(res=>res.flag)
             </div>
             {/* Socials */}
             <div className='nav-soc-box'>
-            <img src={Facebook} alt="admired" className="nav-soc" />
-            <img src={Tiktok} alt="admired" className="nav-soc" />
-            <img src={Instagram} alt="admired" className="nav-soc" />
+            <img src={Facebook} alt="admired" className="nav-soc" onClick={()=>window.open("https://www.instagram.com/admired_official/",'_blank')} />
+            <img src={Tiktok} alt="admired" className="nav-soc" onClick={()=>window.open("https://www.tiktok.com/@admired_official",'_blank')} />
+            <img src={Instagram} alt="admired" className="nav-soc" onClick={()=>window.open("https://www.instagram.com/admired_official/",'_blank')} />
             </div>
 
             <div className='nav-flag'>

@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import '../SCSS/Category/category.css'
 import { FormGroup,FormControlLabel,Checkbox,Switch } from '@mui/material'
-import Datas from '../Res/man.json'
+import Datas from '../Res/lady.json'
 import { useDispatch,useSelector } from 'react-redux'
 import {DataFilterAct,DataFilterRemoveAct,DataMax} from '../Redux/Action/DataFilterAct'
 import Gmail from '../Photoes/gmail.webp'
@@ -11,7 +11,7 @@ import Whatsapp from '../Photoes/wts.webp'
 import Remove from '../Photoes/remove.webp'
 
 
-export default function Man(){
+export default function Lady(){
     const dispatch = useDispatch()
     // Choose Gifts
     const data = useSelector(res=>{return res.dataFilter})
@@ -63,7 +63,7 @@ window.open(wtUrl,'_blank').focus()
             {/* Gifts */}
 
             <center><div className='cat-col'>
-<p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ კაცის საჩუქრები':'Choose gifts for man'}</p>
+<p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ კაცის საჩუქრები':lang==='namesRus'?'Выбрать подарки для мужчин':'Choose gifts for men'}</p>
 <FormGroup sx={{
     display:'grid',
     gridTemplateColumns:{xs:'40% 40%',sm:'30% 30% 30%'},
@@ -76,7 +76,7 @@ window.open(wtUrl,'_blank').focus()
     }}>
     {datas.map(res=>(
         <div key={res.id}>
-        <FormControlLabel sx={{paddingLeft:{xs:'20px',sm:'35px'}}} control={<Checkbox />} label={lang==='namesGeo'?res.namesGeo:res.namesEn} onChange={()=>addName(lang==='namesGeo'?res.namesGeo:res.namesEn)}/>
+        <FormControlLabel sx={{paddingLeft:{xs:'20px',sm:'35px'}}} control={<Checkbox />} label={lang==='namesGeo'?res.namesGeo:lang==='namesRus'?res.namesRus:res.namesEn} onChange={()=>addName(lang==='namesGeo'?res.namesGeo:lang==='namesRus'?res.namesRus:res.namesEn)}/>
         </div>
     ))}
 </FormGroup>
@@ -86,14 +86,14 @@ window.open(wtUrl,'_blank').focus()
            {/* Restourant */}
 
            <center><div className='cat-col'>
-           <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ ქალის საჩუქრები':'If you would like to organize a hotel or restaurant, please select'}</p>
-              <FormControlLabel control={<Switch onClick={()=>setRest(e=>!e)} />} label={lang==='namesGeo'?'რესტორნის ორგანიზება':'Restaurant organization'} />
+           <p className='cat-f-text'>{lang==='namesGeo'?'თუ გსურთ სასტუმროს ან რესტორნის ორგანიზება, გთხოვთ, აირჩიოთ':lang==='namesRus'?'Если вы хотите организовать гостиницу или ресторан, выберите':'If you would like to organize a hotel or restaurant, please select'}</p>
+              <FormControlLabel control={<Switch onClick={()=>setRest(e=>!e)} />} label={lang==='namesGeo'?'რესტორნის ორგანიზება':lang==='namesRus'?'Организация ресторана':'Restaurant organization'} />
                 {rest == true
                 ?<div className="cat-org-box">
-                <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ რესტორანში':'At the restaurant of our choice'}</p>
-                <p className='cat-org-text'>{lang==='namesGeo'?' ან თუ გსურთ რესტორნის ორგანიზება თქვენს მიერ არჩეული რესტორანში , შეავსეთ ველი':'Or if you want to organize a restaurant at a restaurant of your choice, fill in the field'}</p>
+                <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ რესტორანში':lang==='namesRus'?'В ресторане по нашему выбору':'At the restaurant of our choice'}</p>
+                <p className='cat-org-text'>{lang==='namesGeo'?' ან თუ გსურთ რესტორნის ორგანიზება თქვენს მიერ არჩეული რესტორანში , შეავსეთ ველი':lang==='namesRus'?'Или если вы хотите организовать ресторан в ресторане по вашему выбору, заполните поле':'Or if you want to organize a restaurant at a restaurant of your choice, fill in the field'}</p>
                 <textarea 
-                placeholder={lang==='namesGeo'?'შეავსეთ ველი ...':'Fill input ...'}
+                placeholder={lang==='namesGeo'?'შეავსეთ ველი ...':lang==='namesRus'?'Заполните поле ...':'Fill input ...'}
                 className='cat-org-textarea'
                 ></textarea>
                 </div>
@@ -105,13 +105,13 @@ window.open(wtUrl,'_blank').focus()
                 :null
                 }
                 {/* Xazi */}
-              <FormControlLabel control={<Switch onClick={()=>setHotel(e=>!e)} />} label={lang==='namesGeo'?'სასტუმროს ორგანიზება':'Hotel organization'} />
+              <FormControlLabel control={<Switch onClick={()=>setHotel(e=>!e)} />} label={lang==='namesGeo'?'სასტუმროს ორგანიზება':lang==='namesRus'?'Организация гостиничного':'Hotel organization'} />
               {hotel == true
                 ?<div className="cat-org-box">
-                <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':'At the hotel we chose'}</p>
-                <p className='cat-org-text'> {lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':'Or if you want to organize a hotel stay at a hotel of your choice, fill in the field'}</p>
+                <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':lang==='namesRus'?'В отеле, который мы выбрали':'At the hotel we chose'}</p>
+                <p className='cat-org-text'> {lang==='namesGeo'?'ან თუ გსურთ თქვენთვის სასურველ სასტუმროში სასტუმროს განთავსება, შეავსეთ ველი':lang==='namesRus'?'Или если вы хотите организовать проживание в отеле по вашему выбору, заполните поле':'Or if you want to organize a hotel stay at a hotel of your choice, fill in the field'}</p>
                 <textarea 
-                placeholder={lang==='namesGeo'?'შეავსეთ ველი ...':'Fill input ...'}
+                placeholder={lang==='namesGeo'?'შეავსეთ ველი ...':lang==='namesRus'?'Заполните поле ...':'Fill input ...'}
                 className='cat-org-textarea'
                 ></textarea>
                 </div>
@@ -124,28 +124,28 @@ window.open(wtUrl,'_blank').focus()
            {/* Date */}
 
 <center><div className='cat-col'>
-<p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ თარიღი და ბიუჯეტი':'Choose a date and budget'}</p>
+<p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ თარიღი და ბიუჯეტი':lang==='namesRus'?'Выберите дату и бюджет':'Choose a date and budget'}</p>
     <div className='cat-col-date date-box'>
         {/* Date */}
 <div className='date-box-cur'>
-<DatePicker  dateFormat="dd/MM/yyyy"  placeholderText='აირჩიეთ თარიღი' selected={date} onChange={(date) => setDate(date)} />
-{date==null?<p className='cat-f-text'>****/**/**</p>:<p className='cat-f-text'>{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}</p>}
+<DatePicker  dateFormat="dd/MM/yyyy"  placeholderText={lang==='namesGeo'?'აირჩიეთ თარიღი':lang==='namesRus'?'Выберите дату':'Select Date'} selected={date} onChange={(date) => setDate(date)} />
+{date==null?<p className='cat-f-text'>**/**/****</p>:<p className='cat-f-text'>{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}</p>}
 </div>
 {/* Budget */}
 <div className='budg-box-cur'>
 <input type='number' max={9999999} placeholder='123...' className='cat-bud'onChange={(e)=>dispatch(DataMax(e.target.value))} value={maxBud} />
-{maxBud==''?<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':'Budget'} </p>:<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':'Budget'} {maxBud}</p>}
+{maxBud==''?<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':lang==='nameRus'?'Бюджет':'Budget'} </p>:<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':lang==='nameRus'?'Бюджет':'Budget'} {maxBud}</p>}
 </div>
 </div>
 </div></center>
 
             {/* BTN Send */}
             <center><div className='cat-col'>
-            <p className='cat-f-text'>{lang==='namesGeo'?'გაგზავნა':'Send'}</p>
+            <p className='cat-f-text'>{lang==='namesGeo'?'გაგზავნა':lang==='namesRus'?'Отправлять':'Send'}</p>
 <div className='cat-btn-send'>
-<img src={Remove} alt='remove' onClick={()=>window.location.reload()}className='sendImage remove' title='გვერდის გასუფთავება'/> |
-<img src={Gmail} alt='gmail' className='sendImage gmail' title='გაგზავნა Gmail-ზე'/> |
-<img src={Whatsapp} onClick={()=>WhatsAppSend()} alt='whatsapp' className='sendImage whatsapp' title='გაგზავნა WhatsApp-ზე'/>
+<img src={Remove} alt='remove' onClick={()=>window.location.reload()}className='sendImage remove' title={lang==='namesGeo'?'გვერდის გასუფთავება':lang==='namesRus'?'Очистить страницу':'Send'} /> |
+<img src={Gmail} alt='gmail' className='sendImage gmail' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} /> |
+<img src={Whatsapp} onClick={()=>WhatsAppSend()} alt='whatsapp' className='sendImage whatsapp' title={lang==='namesGeo'?'გაგზავნა WhatsApp-ზე':lang==='namesRus'?'Отправить по WhatsApp':'Send on WhatsApp'} />
 </div>
            </div></center>
         </div></center>

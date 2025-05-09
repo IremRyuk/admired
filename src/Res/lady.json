@@ -2,40 +2,49 @@
     {
         "id": 1,
         "namesGeo": "ტანსაცმელი",
+        "namesRus":"Одежда",
         "namesEn":"Clothes"
     }, {
         "id": 2,
         "namesGeo": "ჩანთა",
+        "namesRus":"Сумка",
         "namesEn":"Bag"
     }, {
         "id": 3,
         "namesGeo": "სათვალე",
+        "namesRus":"Очки",
         "namesEn":"Glasses"
     },
     {
         "id": 4,
         "namesGeo": "სამკაული",
+        "namesRus":"Ювелирные изделия",
         "namesEn":"Jewelry"
     }, {
         "id": 5,
         "namesGeo": "სუნამო",
+        "namesRus":"Духи",
         "namesEn":"Parfume"
     }, {
         "id": 6,
         "namesGeo": "სუვენირი",
+        "namesRus":"Сувенир",
         "namesEn":"Souvenir"
     },
     {
         "id": 7,
         "namesGeo": "საათი",
+        "namesRus":"Часы",
         "namesEn":"Watch"
     }, {
         "id": 8,
         "namesGeo": "ღვინო",
+        "namesRus":"Вино",
         "namesEn":"Wine"
     }, {
         "id": 9,
         "namesGeo": "ვაუჩერი",
+        "namesRus":"Ваучер",
         "namesEn":"Voucher"
     }
 ]
