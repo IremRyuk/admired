@@ -54,7 +54,7 @@ const lang = useSelector(res=>res.flag)
             </div>
             {/* Socials */}
             <div className='nav-soc-box'>
-            <img src={Facebook} alt="admired" className="nav-soc" onClick={()=>window.open("https://www.instagram.com/admired_official/",'_blank')} />
+            <img src={Facebook} alt="admired" className="nav-soc" />
             <img src={Tiktok} alt="admired" className="nav-soc" onClick={()=>window.open("https://www.tiktok.com/@admired_official",'_blank')} />
             <img src={Instagram} alt="admired" className="nav-soc" onClick={()=>window.open("https://www.instagram.com/admired_official/",'_blank')} />
             </div>
@@ -104,8 +104,8 @@ const lang = useSelector(res=>res.flag)
   {/* Mini Socials */}
 <div className='mini-nav-soc-box'>
 <img src={Facebook} alt="admired" className="mini-nav-soc" />
-<img src={Tiktok} alt="admired" className="mini-nav-soc" />
-<img src={Instagram} alt="admired" className="mini-nav-soc" />
+<img src={Tiktok} alt="admired" className="mini-nav-soc" onClick={()=>window.open("https://www.tiktok.com/@admired_official",'_blank')} />
+<img src={Instagram} alt="admired" className="mini-nav-soc" onClick={()=>window.open("https://www.instagram.com/admired_official/",'_blank')} />
 </div>
 </div>
             </Drawer>
