@@ -192,12 +192,20 @@ input::-webkit-inner-spin-button {
 
 
 // Gifts Page
+.gifts-loading{
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    width: 85vw;
+    gap: 50px;
+    grid-template-columns: 25% 25% 25%;
+}
 .gifts-filter{
     margin-top: 5vh;
     width: 70vw;
     height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 .search-box{
@@ -407,6 +415,12 @@ transition: 0.2s;
         font-size: 20px;
     }
 }
+@media screen and (max-width:900px) {
+    .gifts-loading{
+        grid-template-columns: 30% 30% 30%;
+    }
+}
+
 @media screen and (max-width:800px) {
     .cat-f-text {
         font-size: 20px;
@@ -424,6 +438,9 @@ transition: 0.2s;
     }
     .cat-col-date{
         width: 100%;
+    }
+    .gifts-loading{
+        grid-template-columns: 30% 30%;
     }
     .gifts{
         padding: 10px;
@@ -461,9 +478,12 @@ transition: 0.2s;
     .sendImage{
         width: 20%;
     }
+    .gifts-loading{
+        grid-template-columns: 80%;
+    }
     .gifts{
         padding: 10px;
-        grid-template-columns: 80%;
+        grid-template-columns: 85vw;
         width: 95vw;
     }
     .gift-box {

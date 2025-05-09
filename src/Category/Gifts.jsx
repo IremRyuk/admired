@@ -8,6 +8,7 @@ import ImportExportIcon from '@mui/icons-material/ImportExport';
 import SearchIcon from '@mui/icons-material/Search';
 import { DataGiftsAct } from '../Redux/Action/DataGiftsAct';
 import Badges from '../Home/Badges';
+import { Skeleton } from '@mui/material';
 
 export default function Gifts() {
     // Get Language
@@ -99,9 +100,15 @@ const ShowAll = () => {
     <center>
         {datas==null
         ?
-        <div className='circleProgress'>
-        <CircularProgress sx={{color:'white'}}/>
-       </div>
+        <div className='gifts-loading'>
+        <Skeleton variant="rectangular" sx={{width:{xs:'85vw',sm:'25vw'},height:{xs:'150px',sm:'200px',md:'250px'}}}/>
+        <Skeleton variant="rectangular" sx={{width:{xs:'85vw',sm:'25vw'},height:{xs:'150px',sm:'200px',md:'250px'}}}/>
+        <Skeleton variant="rectangular" sx={{width:{xs:'85vw',sm:'25vw'},height:{xs:'150px',sm:'200px',md:'250px'}}}/>
+        <Skeleton variant="rectangular" sx={{width:{xs:'85vw',sm:'25vw'},height:{xs:'150px',sm:'200px',md:'250px'}}}/>
+        </div>
+    //     <div className='circleProgress'>
+    //     <CircularProgress sx={{color:'white'}}/>
+    //    </div>
         :
         <>
 
