@@ -2,14 +2,14 @@
 .home {
     margin-top: 2vh;
     width: 95%;
-    height: 89vh;
+    min-height: 89vh;
     padding-bottom: 1vh;
     border-radius: 2.4mm;
 }
 // Slideshow
 .slideshow {
     width: 100%;
-    height: 100%;
+    height: 89vh;
     border-radius: 2.4mm;
 }
 .slidePage {
@@ -210,10 +210,65 @@
     position: relative;
 }
 
+// Latest Page
+.latest-box-main{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 231, 231);
+    border-radius: 2.4mm;
+    padding: 10px 0px;
+}
+.latestText{
+    color: #292929;
+    font-size: xx-large;
+    font-weight: 500;
+}
+.limitedBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 300px;
+}
+.latest{
+    width: 15%;
+    height: 85%;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover{
+        scale: 1.07;
+    }
+}
+.limitedImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 // Media Screen Resize
 @media screen and (max-width:1200px) {
     .badge-page {
         width: 45vw;
+    }
+    .latestText{
+        font-size: x-large;
+        font-weight: 500;
+    }
+    .limitedBox{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 300px;
+    }
+    .latest{
+        width: 20%;
+        height: 85%;
     }
 }
 @media screen and (max-width:1000px) {
@@ -231,8 +286,26 @@
     .badge-page {
         width: 50vw;
     }
+    .latestText{
+        font-size: x-large;
+        font-weight: 500;
+    }
+    .limitedBox{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        height: 300px;
+    }
+    .latest{
+        width: 25%;
+        height: 85%;
+    }
 }
 @media screen and (max-width:768px) {
+    .slideshow {
+        height: 80vh;
+    }
     .slideCaption {
         font-size: 20px;
     }
@@ -250,8 +323,25 @@
     .badge-page {
         width: 60vw;
     }
+    .latest-box-main{
+        margin-top: 40px;
+    }
+    .limitedBox{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        height: 200px;
+    }
+    .latest{
+        width: 25%;
+        height: 85%;
+    }
 }
 @media screen and (max-width:550px) {
+    .slideshow {
+        height: 60vh;
+    }
     .slideCaption {
         font-size: 20px;
     }
@@ -268,6 +358,21 @@
     }
     .badge-page {
         width: 80vw;
+    }
+    .latestText{
+        padding-bottom: 30px;
+    }
+    .limitedBox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        height: fit-content;
+    }
+    .latest{
+        width: 70%;
+        height: 50%;
     }
 }
 @media screen and (max-width:425px) {

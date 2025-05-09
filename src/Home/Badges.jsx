@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../SCSS/Home/home.css'
 import { Drawer } from '@mui/material';
 import { GiftsActRemove } from '../Redux/Action/GiftsAct';
@@ -26,7 +26,7 @@ if(datas.length <= 0){
         <center>
         <div className='badge'>
         <Badge badgeContent={datas.length} color="primary" onClick={()=>setModal(e=>!e)}>
-          <MailIcon fontSize='large' sx={{color:'#C74F80'}} />
+          <ShoppingCartIcon fontSize='large' sx={{color:'#C74F80'}} />
         </Badge>
         </div>
         </center>
@@ -48,7 +48,7 @@ if(datas.length <= 0){
 <div className='gift-box-items'>
                 <img src={res.image} className='gift-image' alt="admired" />
                 <div className='gift-descr'>
-                <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':lang==='namesRus'?"Имя: ":'Name: '}{lang==='namesGeo'?res.nameGeo:res.nameEng}</p>
+                <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':lang==='namesRus'?"Имя: ":'Name: '}{lang==='namesGeo'?res.nameGeo:lang==='namesRus'?res.nameRus:res.nameEng}</p>
                 {
                     parseInt(res.sale) === 0
                     ?
