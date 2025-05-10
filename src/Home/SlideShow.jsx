@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import First from '../Photoes/pexels/11.jpg'
-import Second from '../Photoes/pexels/4.jpg'
+import Second from '../Photoes/pexels/2.jpg'
 import Third from '../Photoes/pexels/5.jpg'
 import Forth from '../Photoes/pexels/6.jpg'
 import { useSelector } from 'react-redux';
@@ -15,9 +15,9 @@ export default function SlideShow() {
          captionRus:"Каждый предмет изготавливается лично",
          img:First
         },
-        {captionGeo:"ჩვენ ვქნით საჩუქრებს, რომლებიც რჩება დაუვიწყარ მოგონებებად",
-          captionEng:"Every item is made personally",
-          captionRus:"Мы делаем подарки, которые остаются незабываемыми воспоминаниями.",
+        {captionGeo:"ჩვენ საჩუქრებს ვაძლევთ იდეალურ და დახვეწილ სახეს",
+          captionEng:"We give gifts an ideal and sophisticated look",
+          captionRus:"Придаем подаркам идеальный и изысканный вид",
             img:Second
         },
         {captionGeo:"საჩუქრებს",
