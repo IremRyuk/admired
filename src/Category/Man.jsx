@@ -6,12 +6,15 @@ import { FormGroup,FormControlLabel,Checkbox,Switch } from '@mui/material'
 import Datas from '../Res/lady.json'
 import { useDispatch,useSelector } from 'react-redux'
 import {DataFilterAct,DataFilterRemoveAct,DataMax} from '../Redux/Action/DataFilterAct'
-import Gmail from '../Photoes/gmail.webp'
-import Whatsapp from '../Photoes/wts.webp'
-import Remove from '../Photoes/remove.webp'
+import { Modal } from '@mui/material'
+import '../SCSS/Modal/modal.css'
+import WB from '../Photoes/testslide/wb.svg'
+import WC from '../Photoes/testslide/wc.svg'
+import GB from '../Photoes/testslide/gb.svg'
+import GC from '../Photoes/testslide/gc.svg'
 
 
-export default function Lady(){
+export default function Man(){
     const dispatch = useDispatch()
     // Choose Gifts
     const data = useSelector(res=>{return res.dataFilter})
@@ -22,6 +25,7 @@ export default function Lady(){
     // Restoraunt
     const [rest,setRest] = useState(false)
     const [hotel,setHotel] = useState(false)
+    const[modalM,setModal] = useState(false)
     // add / remove
     const addName = (names) => {
         if(!data.includes(names)){
@@ -59,11 +63,12 @@ window.open(wtUrl,'_blank').focus()
 
     }
     return(
+        <>
         <center><div className="cat-page">
             {/* Gifts */}
 
             <center><div className='cat-col'>
-<p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ კაცის საჩუქრები':lang==='namesRus'?'Выбрать подарки для мужчин':'Choose gifts for men'}</p>
+            <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ კაცის საჩუქრები':lang==='namesRus'?'Выбрать подарки для мужчин':'Choose gifts for men'}</p>
 <FormGroup sx={{
     display:'grid',
     gridTemplateColumns:{xs:'40% 40%',sm:'30% 30% 30%'},
@@ -142,12 +147,54 @@ window.open(wtUrl,'_blank').focus()
             {/* BTN Send */}
             <center><div className='cat-col'>
             <p className='cat-f-text'>{lang==='namesGeo'?'გაგზავნა':lang==='namesRus'?'Отправлять':'Send'}</p>
-<div className='cat-btn-send'>
-<img src={Remove} alt='remove' onClick={()=>window.location.reload()}className='sendImage remove' title={lang==='namesGeo'?'გვერდის გასუფთავება':lang==='namesRus'?'Очистить страницу':'Send'} /> |
-<img src={Gmail} alt='gmail' className='sendImage gmail' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} /> |
-<img src={Whatsapp} onClick={()=>WhatsAppSend()} alt='whatsapp' className='sendImage whatsapp' title={lang==='namesGeo'?'გაგზავნა WhatsApp-ზე':lang==='namesRus'?'Отправить по WhatsApp':'Send on WhatsApp'} />
-</div>
+            <button onClick={()=>setModal(e=>!e)} className='btn-send-main'>
+                {lang==='namesGeo'?'გაგზავნა მონაცემების':lang==='namesRus'?'Отправлять':'Send Information'}
+            </button>
            </div></center>
         </div></center>
+
+        {/* Modal */}
+        <Modal
+    open={modalM}
+    onClose={()=>setModal(e=>!e)}
+    >
+    <div className='send-text-box'>
+    <p className='send-text-title'>
+        Admired
+    </p>
+    <p className='send-text'>
+        {lang==='namesGeo'
+        ?'გადმოგვიგზეთ ინფორმაცია და და ჩვენი ოპერატორი რამოდენიმე წუთში დაგიკავშირდებათ'
+        :lang==='namesRus'?'Отправьте нам свои данные, и наш оператор свяжется с вами в течение нескольких минут.'
+        :'Send us your information and our operator will contact you within a few minutes.'}
+    </p>
+    <div className='btn-submit'>
+    <div className='images-box'>
+    <img src={GB} alt='gmail' className='btn-submit-act gmail-b' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
+    <img src={GC} alt='gmail' className='btn-submit-act gmail-c' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
+    <p className='submit-titles'>WhatsApp</p>
+    </div>
+    <div className='images-box'>
+    <img src={GB} alt='gmail' className='btn-submit-act gmail-b' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
+    <img src={GC} alt='gmail' className='btn-submit-act gmail-c' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
+    <p className='submit-titles'>WhatsApp</p>
+    </div>
+    <div className='images-box'>
+    <img src={WB}alt='whatsapp' className='btn-submit-act whatsapp-b' />
+    <img src={WC} onClick={()=>WhatsAppSend()} alt='whatsapp' className='btn-submit-act whatsapp-c' title={lang==='namesGeo'?'გაგზავნა WhatsApp-ზე':lang==='namesRus'?'Отправить по WhatsApp':'Send on WhatsApp'} />
+    <p className='submit-titles'>WhatsApp</p>
+    </div>
+    
+    </div>
+    <p className='send-text'>
+        {lang==='namesGeo'
+        ?'დამატებით კითხვებისთვის დაგვიკავშირდით - +995 555 603 603'
+        :lang==='namesRus'?'По дополнительным вопросам обращайтесь к нам - +995 555 603 603'
+        :'For additional questions, contact us - +995 555 603 603'}
+    </p>
+    </div>
+    </Modal>
+
+        </>
     )
 }

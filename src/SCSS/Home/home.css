@@ -18,6 +18,22 @@
   height: 100%;
 }
 
+.slideshow-loading {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circ {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .slideImg {
   width: 100%;
   height: 100%;
@@ -36,8 +52,7 @@
   padding: 5px 10px;
   transform: translate(-50%, 80%);
   color: white;
-  -webkit-backdrop-filter: blur(7px);
-          backdrop-filter: blur(7px);
+  background-color: #C74F80;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,22 +82,63 @@
   align-items: center;
   background-color: #C74F80;
   animation: 2s AnimeCircle linear;
+  border: none;
+  outline: none;
 }
 
 .modal-box {
   position: absolute;
   left: 50%;
   top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 10px;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 500px;
-  padding: 10px;
-  background-color: white;
+  width: 40vw;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 10px 15px;
+  background-color: #C74F80;
+  border-radius: 2.4mm;
   animation: 0.4s ModalAnime linear;
 }
 
+.modal-title-main {
+  width: 100%;
+  font-size: xx-large;
+  font-family: "Pinyon Script", cursive;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
 .modal-title {
-  color: black;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: large;
+  font-weight: 600;
+}
+
+.modal-soc-box {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.modal-soc {
+  cursor: pointer;
+  scale: 1.1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.1s;
+}
+.modal-soc:hover {
+  scale: 1.17;
+  filter: drop-shadow(0px 0px 2px white);
 }
 
 @keyframes ModalAnime {
@@ -239,7 +295,7 @@
   color: #292929;
   font-size: 25px;
   border-radius: 2.4mm;
-  box-shadow: 0px 0px 10px rgb(201, 160, 160);
+  box-shadow: 0 0 10px rgb(201, 160, 160);
   position: relative;
 }
 
@@ -251,7 +307,7 @@
   align-items: center;
   background-color: rgb(231, 231, 231);
   border-radius: 2.4mm;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 .latestText {
@@ -336,6 +392,12 @@
     width: 25%;
     height: 85%;
   }
+  .modal-box {
+    width: 70vw;
+    height: -moz-max-content;
+    height: max-content;
+    padding: 10px 15px;
+  }
 }
 @media screen and (max-width: 768px) {
   .slideshow {
@@ -371,6 +433,15 @@
   .latest {
     width: 25%;
     height: 85%;
+  }
+  .modal-box {
+    width: 80vw;
+    height: -moz-max-content;
+    height: max-content;
+    padding: 10px 15px;
+  }
+  .modal-title {
+    font-size: medium;
   }
 }
 @media screen and (max-width: 550px) {
@@ -410,6 +481,15 @@
   .latest {
     width: 70%;
     height: 50%;
+  }
+  .modal-box {
+    width: 80vw;
+    height: -moz-max-content;
+    height: max-content;
+    padding: 10px 5px;
+  }
+  .modal-title {
+    font-size: 15px;
   }
 }
 @media screen and (max-width: 425px) {

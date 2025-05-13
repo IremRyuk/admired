@@ -5,7 +5,6 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
 import '../SCSS/Admin/admin.css'
 import { useSelector } from 'react-redux';
-import CircularProgress from '@mui/material/CircularProgress';
 
 
 export default function AdminImages() {
@@ -14,13 +13,6 @@ export default function AdminImages() {
     const [namesGeo,setNamesGeo] = useState('')
     const [namesEng,setNamesEng] = useState('')
     const [namesRus,setNamesRus] = useState('')
-    const [titlesGeo,setTitleGeo] = useState('')
-    const [titlesEng,setTitleEng] = useState('')
-    const [titlesRus,setTitleRus] = useState('')
-    const [prices,setPrice] = useState('')
-    const [sales,setSale] = useState('')
-    // loading
-    const [loading,setLoading] = useState(false)
 
 
 
@@ -32,7 +24,7 @@ export default function AdminImages() {
 
 
 const Upload = async  () => {
-    if(!imagebase64 || namesGeo.length <= 0 || namesEng.length <= 0 ||namesRus.length <= 0 ||titlesGeo.length <= 0 ||titlesEng.length <= 0 ||titlesRus.length <= 0 || prices.length <= 0 || sales.length <= 0){
+    if(!imagebase64 || namesGeo.length <= 0 || namesEng.length <= 0 ||namesRus.length <= 0){
         // All Datamagebase64}
 alert('Problem Fill Input')
     }else{
@@ -40,11 +32,11 @@ alert('Problem Fill Input')
         const base64 = await convertToBase64(imagebase64)
         console.log(base64)
         // All Data
-        const allInfo = {nameGeo:namesGeo,nameEng:namesEng,nameRus:namesRus,titleGeo:titlesGeo,titleEng:titlesEng,titleRus:titlesRus,price:prices,sale:sales,image:base64}
+        const allInfo = {nameGeo:namesGeo,nameEng:namesEng,nameRus:namesRus,image:base64}
         // Post
         try {
           
-         const newData = await axios.post('https://admiredb-dn1c.onrender.com/usermenu/',allInfo,{
+         const newData = await axios.post('https://admiredb-dn1c.onrender.com/images/',allInfo,{
            headers:{
              'Content-Type':'application/json'
            }
@@ -77,30 +69,18 @@ const VisuallyHiddenInput = styled('input')({
       
   return (
     <center>
-       {loading===true
-      ?
-      <div className='circleProgress'>
-      <CircularProgress sx={{color:'white'}}/>
-     </div>
-     :
      <div className='additem'>
       <p className='additem-name'>{lang==='namesGeo'?'პროდუქტის დამატება':'Add Product'}</p>
         <input type='text' className='additem-text' placeholder="namesGeo" onChange={(e)=>{setNamesGeo(e.target.value)}} />
         <input type='text' className='additem-text' placeholder="namesEng" onChange={(e)=>{setNamesEng(e.target.value)}} />
         <input type='text' className='additem-text' placeholder="namesRus" onChange={(e)=>{setNamesRus(e.target.value)}} />
-        <input type='text' className='additem-text' placeholder="titleGeo" onChange={(e)=>{setTitleGeo(e.target.value)}} />
-        <input type='text' className='additem-text' placeholder="titleEng" onChange={(e)=>{setTitleEng(e.target.value)}} />
-        <input type='text' className='additem-text' placeholder="titleRus" onChange={(e)=>{setTitleRus(e.target.value)}} />
-        <input type='number' className='additem-text' placeholder="price" onChange={(e)=>{setPrice(e.target.value)}} />
-        <input type='number' className='additem-text' placeholder="sale" onChange={(e)=>{setSale(e.target.value)}} />
         <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
       Upload file
       <VisuallyHiddenInput type="file" onChange={(e)=>setImages(e)}/>
     </Button>
     {showimage==null?<></>:<img src={showimage} className='additem-show-img'/>}
     <button onClick={()=>Upload()} className='additem-btn'>Upload</button>
-    </div>}
-    
+    </div>
     </center>
   )
 }
