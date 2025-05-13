@@ -1,49 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useSelector } from 'react-redux';
-import { CircularProgress, Skeleton } from '@mui/material';
+import First from '../Photoes/pexels/1.jpg'
+import Second from '../Photoes/pexels/2.jpg'
+import Three from '../Photoes/pexels/3.jpg'
+import Four from '../Photoes/pexels/3.jpg'
 
 export default function SlideShow() {
-  const [images,setDataImages] = useState(null)
-  const getImages = async () => {
-    const res = await fetch("https://admiredb-dn1c.onrender.com/images/allImages")
-    const json = await res.json()
-    setDataImages(json)
-    console.log(json)
-  }
-  useEffect(()=>{
-getImages()
-  },[])
+  const image = [
+    {nameGeo:'გახადე ჰარმონია ხელშესახები',
+     nameRus:'Сделайте гармонию ощутимой',
+     nameEng:'Make harmony tangible',
+     image:First
+    },
+    {nameGeo:'ჩვენ საჩუქრებს ვაძლევთ იდეალურ და დახვეწილ სახეს',
+      nameRus:'Придаем подаркам идеальный и изысканный вид',
+      nameEng:'We give gifts an ideal and sophisticated look',
+      image:Second
+     },
+     {nameGeo:'1',
+      nameRus:'1',
+      nameEng:'1',
+      image:Three
+     },
+     {nameGeo:'2',
+      nameRus:'2',
+      nameEng:'2',
+      image:Four
+     },
 
+  ]
         // Language
         const lang = useSelector(res=>res.flag)
   return (
     <div className='slideshow'>
-      {images===null
 
-      // Loader
-      ?<Swiper
-      spaceBetween={50}
-      slidesPerView={1}
-      modules={[Pagination, Navigation]}
-      className='slideshow'
-      pagination={{
-        clickable: true,
-      }}
-      navigation={true}
-    >
-      <SwiperSlide className='slidePage'>
-      <div className='slideshow-loading'>
-      <Skeleton variant="rectangular" sx={{width:'100%',height:'100%'}}/>
-      <CircularProgress className='circ' sx={{color:'white'}}/>
-      </div>
-      </SwiperSlide>
-    </Swiper>
-
-      //  Data Images
-      :<Swiper
+       <Swiper 
       spaceBetween={50}
       slidesPerView={1}
       modules={[Autoplay, Pagination, Navigation]}
@@ -58,14 +52,13 @@ getImages()
       navigation={true}
       loop={true}
     >
-      {images.map(res=>(
-            <SwiperSlide className='slidePage' key={res._id}>
+      {image.map(res=>(
+            <SwiperSlide className='slidePage' key={res.nameGeo}>
                 <img src={res.image} alt={res.caption} className='slideImg'/>
                 <p className='slideCaption'>{lang==='namesGeo'?res.nameGeo:lang==='namesRus'?res.nameRus:res.nameEng}</p>
             </SwiperSlide>
         ))}
       </Swiper>
-      }
     </div>
   )
 }
