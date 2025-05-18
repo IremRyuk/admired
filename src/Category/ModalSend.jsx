@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import {ModalAct} from '../Redux/Action/ModalAct'
 import Gmail from '../Photoes/gmail.webp'
 import Whatsapp from '../Photoes/wts.webp'
-import Remove from '../Photoes/remove.webp'
 
 export default function ModalSend() {
     const modal = useSelector(res=>res.modal)
@@ -35,9 +34,8 @@ export default function ModalSend() {
     onClose={(e)=>ModalAct(e=>!e)}
     >
     <div className='btn-submit'>
-    <img src={Remove} alt='remove' onClick={()=>window.location.reload()}className='sendImage remove' title={lang==='namesGeo'?'გვერდის გასუფთავება':lang==='namesRus'?'Очистить страницу':'Send'} /> |
     <img src={Gmail} alt='gmail' className='sendImage gmail' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} /> |
-        <img src={Whatsapp} onClick={()=>WhatsAppSend()} alt='whatsapp' className='sendImage whatsapp' title={lang==='namesGeo'?'გაგზავნა WhatsApp-ზე':lang==='namesRus'?'Отправить по WhatsApp':'Send on WhatsApp'} />
+    <img src={Whatsapp} onClick={()=>WhatsAppSend()} alt='whatsapp' className='sendImage whatsapp' title={lang==='namesGeo'?'გაგზავნა WhatsApp-ზე':lang==='namesRus'?'Отправить по WhatsApp':'Send on WhatsApp'} />
     </div>
     </Modal>
   )

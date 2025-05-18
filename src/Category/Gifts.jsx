@@ -141,7 +141,7 @@ const ShowAll = () => {
         {datas.map(res=>(
             <div className='gift-box' key={res._id}>
                 <div className='gift-box-items'>
-                <img src={res.image} className='gift-image' alt="admired" />
+                <img src={res.image} className='gift-image' alt="admired" loading='lazy' />
                 <div className='gift-descr'>
                 <p className='gift-name'>{lang==='namesGeo'?'სახელი: ':lang==='namesRus'?"Имя: ":'Name: '}{lang==='namesGeo'?res.nameGeo:lang==='namesRus'?res.nameRus:res.nameEng}</p>
                 <p className='gift-name'>{lang==='namesGeo'?'აღწერა: ':lang==='namesRus'?"Описание: ":'Description: '}{lang==='namesGeo'?res.titleGeo:lang==='namesRus'?res.nameRus:res.titleEng}</p>

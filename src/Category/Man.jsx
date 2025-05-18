@@ -2,19 +2,17 @@ import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import '../SCSS/Category/category.css'
-import { FormGroup,FormControlLabel,Checkbox,Switch } from '@mui/material'
+import { FormGroup,FormControlLabel,Checkbox,Switch, CircularProgress, FormControl, Radio, RadioGroup } from '@mui/material'
 import Datas from '../Res/lady.json'
 import { useDispatch,useSelector } from 'react-redux'
 import {DataFilterAct,DataFilterRemoveAct,DataMax} from '../Redux/Action/DataFilterAct'
-import { Modal } from '@mui/material'
 import '../SCSS/Modal/modal.css'
-import WB from '../Photoes/testslide/wb.svg'
-import WC from '../Photoes/testslide/wc.svg'
-import GB from '../Photoes/testslide/gb.svg'
-import GC from '../Photoes/testslide/gc.svg'
 
 
-export default function Man(){
+export default function Lady(){
+    const [err,setErr] = useState('')
+    const [loading,setLoading] = useState(false)
+    const [resp,setResp] = useState('')
     const dispatch = useDispatch()
     // Choose Gifts
     const data = useSelector(res=>{return res.dataFilter})
@@ -25,12 +23,14 @@ export default function Man(){
     // Restoraunt
     const [rest,setRest] = useState(false)
     const [hotel,setHotel] = useState(false)
-    const[modalM,setModal] = useState(false)
+    const [active,setActive] = useState(false)
+    const [mail,setGmail] = useState('')
+    const [phone,setPhone] = useState('')
+    const [contact,setContacts] = useState('')
     // add / remove
     const addName = (names) => {
         if(!data.includes(names)){
             dispatch(DataFilterAct(names))
-            console.log(data)
         }else{
             dispatch(DataFilterRemoveAct(names))
             console.log('gaiwminda',data)
@@ -44,31 +44,54 @@ export default function Man(){
     // Data
     const datas = Datas
 
-    // Test WhatsApp Send
-    const WhatsAppSend = () => {
-const number = +995592007017
-const datas = data
-const budget = `- ${maxBud}`
-const dates = `${date.getDate()} / ${date.getMonth()+1} / ${date.getFullYear()}`
-const reserve = `რესტორანი - ${rest} || სასტუმრო - ${hotel}`
+const SendGmail = async (contact) => {
+    setLoading(true)
+    const gmail = `საჩუქრები - ${data}; სასტუმრო - ${hotel}; რესტორანი - ${rest}; აქტივობა - ${active}; თარიღი-${date}; ბიუჯეტი - ${maxBud} || დაუკავშირდი - ${contact}; ტელეფონი - ${phone}; მაილი - ${mail}`
+    try {
+        const response = await fetch('https://admiredb-dn1c.onrender.com/users/gmail',{
+            method:'POST',
+            body:JSON.stringify({gmail}),
+            headers:{
+              'Content-Type':'application/json',
+            }
+          })
+          const json = await response.json()    
+          setResp(lang==='namesGeo'?'წარმატებით გაიგზავნა':lang==='namesRus'?'Успешно отправлено':'Successfully Sent')
+          setTimeout(()=>{
+            setLoading(false)
+            window.location.reload()
+          },[1000])      
+    } catch (error) {
+        setResp(lang==='namesGeo'?'პრობლემაა, გთხოვთ, სცადოთ მოგვიანებით':lang==='namesRus'?'Проблема. Пожалуйста, попробуйте еще раз позже':'Problem , Please try again later')
+        setTimeout(()=>{
+            setLoading(false)
+          },[1000])         
+    } 
+}
 
-const wtUrl = 'https://wa.me/' + number + '?text='
-+ "არჩეული - " + datas +' ; ' + "%0a"
-+ "ბიუჯეტი - " + budget +' ; ' + "%0a"
-+ "თარიღი - " + dates +' ; '+ "%0a"
-+ "დაჯავშნა - " + reserve +' ; ' + "%0a"
-        
-
-window.open(wtUrl,'_blank').focus()
-
+const SendFunc = (contact) => {
+    if(data.length == 0  && rest == false && hotel == false && active == false){
+        setErr(lang==='namesGeo'?'მონიშნეთ საჩუქრები და შეიყვანეთ თქვენი მონაცემები':lang==='namesRus'?'Выберите подарки и введите свои данные':'Select gifts and enter your details')
+    }else if(date == null || maxBud == ''){
+        setErr(lang==='namesGeo'?'აირჩიეთ თარიღი და შეიყვანეთ მაქსიმალური ბიუჯეტი':lang==='namesRus'?'Выберите дату и введите максимальный бюджет':'Select a date and enter a maximum budget.')
+    }else if(mail==''||phone==''){
+        setErr(lang==='namesGeo'?'შეიყვანეთ საკონტაქტო ინფორმაცია':lang==='namesRus'?'Выберите дату и введите максимальный бюджет':'Select a date and enter a maximum budget.')
+    }else if(contact === ''){
+        setErr(lang==='namesGeo'?'აირჩიეთ სად გნებავთ რომ დაგიკავშირდეთ':lang==='namesRus'?'Выберите, где с вами связаться.':'Choose where you would like to be contacted.')
     }
+    else{
+        setErr('')
+        SendGmail(contact)
+    }    
+}
+
     return(
         <>
         <center><div className="cat-page">
             {/* Gifts */}
 
             <center><div className='cat-col'>
-            <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ კაცის საჩუქრები':lang==='namesRus'?'Выбрать подарки для мужчин':'Choose gifts for men'}</p>
+            <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ კაცის საჩუქრები':lang==='namesRus'?'Выбрать подарки для мужчин':'Choose gifts for men'}</p> 
 <FormGroup sx={{
     display:'grid',
     gridTemplateColumns:{xs:'40% 40%',sm:'30% 30% 30%'},
@@ -92,7 +115,7 @@ window.open(wtUrl,'_blank').focus()
 
            <center><div className='cat-col'>
            <p className='cat-f-text'>{lang==='namesGeo'?'თუ გსურთ სასტუმროს ან რესტორნის ორგანიზება, გთხოვთ, აირჩიოთ':lang==='namesRus'?'Если вы хотите организовать гостиницу или ресторан, выберите':'If you would like to organize a hotel or restaurant, please select'}</p>
-              <FormControlLabel control={<Switch onClick={()=>setRest(e=>!e)} />} label={lang==='namesGeo'?'რესტორნის ორგანიზება':lang==='namesRus'?'Организация ресторана':'Restaurant organization'} />
+              <FormControlLabel sx={{width:'100%',paddingLeft:'40%'}} control={<Switch onClick={()=>setRest(e=>!e)} />} label={lang==='namesGeo'?'რესტორნის ორგანიზება':lang==='namesRus'?'Организация ресторана':'Restaurant organization'} />
                 {rest == true
                 ?<div className="cat-org-box">
                 <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ რესტორანში':lang==='namesRus'?'В ресторане по нашему выбору':'At the restaurant of our choice'}</p>
@@ -110,7 +133,7 @@ window.open(wtUrl,'_blank').focus()
                 :null
                 }
                 {/* Xazi */}
-              <FormControlLabel control={<Switch onClick={()=>setHotel(e=>!e)} />} label={lang==='namesGeo'?'სასტუმროს ორგანიზება':lang==='namesRus'?'Организация гостиничного':'Hotel organization'} />
+              <FormControlLabel sx={{width:'100%',paddingLeft:'40%'}} control={<Switch onClick={()=>setHotel(e=>!e)} />} label={lang==='namesGeo'?'სასტუმროს ორგანიზება':lang==='namesRus'?'Организация гостиничного':'Hotel organization'} />
               {hotel == true
                 ?<div className="cat-org-box">
                 <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':lang==='namesRus'?'В отеле, который мы выбрали':'At the hotel we chose'}</p>
@@ -122,6 +145,24 @@ window.open(wtUrl,'_blank').focus()
                 </div>
                 :null
                 }
+                {/* Xazi */}
+                {hotel == true || active == true 
+                ?<div className='cat-line'></div>
+                :null
+                }
+                <FormControlLabel sx={{width:'100%',paddingLeft:'40%'}} control={<Switch onClick={()=>setActive(e=>!e)} />} label={lang==='namesGeo'?'აქტივობების ორგანიზება':lang==='namesRus'?'Деятельность организовать':'Organizing an activity'} />
+              {active == true
+                ?<div className="cat-org-box">
+                <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':lang==='namesRus'?'В отеле, который мы выбрали':'At the hotel we chose'}</p>
+                <p className='cat-org-text'> {lang==='namesGeo'?'ან თუ გსურთ თქვენთვის სასურველ სასტუმროში სასტუმროს განთავსება, შეავსეთ ველი':lang==='namesRus'?'Или если вы хотите организовать проживание в отеле по вашему выбору, заполните поле':'Or if you want to organize a hotel stay at a hotel of your choice, fill in the field'}</p>
+                <textarea 
+                placeholder={lang==='namesGeo'?'შეავსეთ ველი ...':lang==='namesRus'?'Заполните поле ...':'Fill input ...'}
+                className='cat-org-textarea'
+                ></textarea>
+                </div>
+                :null
+                }
+                
 
            </div></center>
 
@@ -144,57 +185,50 @@ window.open(wtUrl,'_blank').focus()
 </div>
 </div></center>
 
-            {/* BTN Send */}
-            <center><div className='cat-col'>
-            <p className='cat-f-text'>{lang==='namesGeo'?'გაგზავნა':lang==='namesRus'?'Отправлять':'Send'}</p>
-            <button onClick={()=>setModal(e=>!e)} className='btn-send-main'>
-                {lang==='namesGeo'?'გაგზავნა მონაცემების':lang==='namesRus'?'Отправлять':'Send Information'}
-            </button>
-           </div></center>
-        </div></center>
+{/* BTN Contact */}
+    <center><div className='cat-col'>
+    <p className='cat-f-text'>{lang==='namesGeo'?'საკონტაქტო ინფორმაცია':lang==='namesRus'?'Контактная информация':'Contact information'}</p>
+    <div className='contact'>
+        <p className='contact-text'>{lang==='namesGeo'?'თქვენი Gmail':lang==='namesRus'?'Ваш Gmail':'Your Gmail'}</p>
+        <input value={mail} onChange={(e)=>setGmail(e.target.value)} type='text' className='gmail-contact' placeholder='Gmail' />
+        <p className='contact-text'>{lang==='namesGeo'?'თქვენი საკონტაქტო ტელეფონი':lang==='namesRus'?'Ваш контактный номер телефона':'Your contact phone number'}</p>
+        <input value={phone} onChange={(e)=>setPhone(e.target.value)} type='number' className='gmail-contact' placeholder={lang==='namesGeo'?'ტელეფონი':lang==='namesRus'?'Телефон':'Phone'} />
+    </div>
+   </div></center>
 
-        {/* Modal */}
-        <Modal
-    open={modalM}
-    onClose={()=>setModal(e=>!e)}
+
+   {/* BTN Send */}
+   <center><div className='cat-col'>
+    <div className='contact'>
+    <FormControl 
+    sx={{display:'flex',justifyContent:'space-around',alignItems:'center',gap:'20px'}}
+    onChange={(e)=>{setContacts(e.target.value)}}
     >
-    <div className='send-text-box'>
-    <p className='send-text-title'>
-        Admired
-    </p>
-    <p className='send-text'>
-        {lang==='namesGeo'
-        ?'გადმოგვიგზეთ ინფორმაცია და და ჩვენი ოპერატორი რამოდენიმე წუთში დაგიკავშირდებათ'
-        :lang==='namesRus'?'Отправьте нам свои данные, и наш оператор свяжется с вами в течение нескольких минут.'
-        :'Send us your information and our operator will contact you within a few minutes.'}
-    </p>
-    <div className='btn-submit'>
-    <div className='images-box'>
-    <img src={GB} alt='gmail' className='btn-submit-act gmail-b' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
-    <img src={GC} alt='gmail' className='btn-submit-act gmail-c' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
-    <p className='submit-titles'>WhatsApp</p>
+  <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ სად გნებავთ რომ დაგიკავშირდეთ':lang==='namesRus'?'Выберите, где с вами связаться.':'Choose where you would like to be contacted'}</p>
+  <RadioGroup
+    aria-labelledby="demo-radio-buttons-group-label"
+    defaultValue="female"
+    name="radio-buttons-group"
+  >
+    <FormControlLabel value="Phone" control={<Radio />} label={lang==='namesGeo'?'ტელეფონი':lang==='namesRus'?'Телефон':'Phone'} />
+    <FormControlLabel value="Gmail" control={<Radio />} label="Gmail" />
+    <FormControlLabel value="WhatsApp" control={<Radio />} label="WhatsApp" />
+  </RadioGroup>
+</FormControl>
     </div>
-    <div className='images-box'>
-    <img src={GB} alt='gmail' className='btn-submit-act gmail-b' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
-    <img src={GC} alt='gmail' className='btn-submit-act gmail-c' title={lang==='namesGeo'?'გაგზავნა Gmail-ზე':lang==='namesRus'?'Отправить на Gmail':'Send to Gmail'} />
-    <p className='submit-titles'>WhatsApp</p>
-    </div>
-    <div className='images-box'>
-    <img src={WB}alt='whatsapp' className='btn-submit-act whatsapp-b' />
-    <img src={WC} onClick={()=>WhatsAppSend()} alt='whatsapp' className='btn-submit-act whatsapp-c' title={lang==='namesGeo'?'გაგზავნა WhatsApp-ზე':lang==='namesRus'?'Отправить по WhatsApp':'Send on WhatsApp'} />
-    <p className='submit-titles'>WhatsApp</p>
-    </div>
-    
-    </div>
-    <p className='send-text'>
-        {lang==='namesGeo'
-        ?'დამატებით კითხვებისთვის დაგვიკავშირდით - +995 555 603 603'
-        :lang==='namesRus'?'По дополнительным вопросам обращайтесь к нам - +995 555 603 603'
-        :'For additional questions, contact us - +995 555 603 603'}
-    </p>
-    </div>
-    </Modal>
+    {err==''?<></>:<p className='error'>{err}</p>}
+    <button onClick={()=>SendFunc(contact)} className='btn-send-main'>
+        {lang==='namesGeo'?'გაგზავნა მონაცემების':lang==='namesRus'?'Отправлять':'Send Information'}
+    </button>
+   </div></center>
 
+</div></center>
+    {loading===false
+    ?<></>
+    :<div className='loading-send'>
+        <CircularProgress sx={{color:'#ed889a'}}/>
+       <p className='loading-text'>{resp}</p>
+    </div>}
         </>
     )
 }
