@@ -75,7 +75,7 @@ const SendFunc = (contact) => {
     }else if(date == null || maxBud == ''){
         setErr(lang==='namesGeo'?'აირჩიეთ თარიღი და შეიყვანეთ მაქსიმალური ბიუჯეტი':lang==='namesRus'?'Выберите дату и введите максимальный бюджет':'Select a date and enter a maximum budget.')
     }else if(mail==''||phone==''){
-        setErr(lang==='namesGeo'?'შეიყვანეთ საკონტაქტო ინფორმაცია':lang==='namesRus'?'Выберите дату и введите максимальный бюджет':'Select a date and enter a maximum budget.')
+        setErr(lang==='namesGeo'?'შეიყვანეთ საკონტაქტო ინფორმაცია':lang==='namesRus'?'Введите контактную информацию':'Enter contact information.')
     }else if(contact === ''){
         setErr(lang==='namesGeo'?'აირჩიეთ სად გნებავთ რომ დაგიკავშირდეთ':lang==='namesRus'?'Выберите, где с вами связаться.':'Choose where you would like to be contacted.')
     }
@@ -209,6 +209,7 @@ const SendFunc = (contact) => {
     aria-labelledby="demo-radio-buttons-group-label"
     defaultValue="female"
     name="radio-buttons-group"
+    sx={{display:'flex',flexDirection:{xs:'column',sm:'row'}}}
   >
     <FormControlLabel value="Phone" control={<Radio />} label={lang==='namesGeo'?'ტელეფონი':lang==='namesRus'?'Телефон':'Phone'} />
     <FormControlLabel value="Gmail" control={<Radio />} label="Gmail" />

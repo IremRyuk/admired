@@ -73,11 +73,11 @@ const SendFunc = (contact) => {
     if(data.length == 0  && rest == false && hotel == false && active == false){
         setErr(lang==='namesGeo'?'მონიშნეთ საჩუქრები და შეიყვანეთ თქვენი მონაცემები':lang==='namesRus'?'Выберите подарки и введите свои данные':'Select gifts and enter your details')
     }else if(date == null || maxBud == ''){
-        setErr(lang==='namesGeo'?'აირჩიეთ თარიღი და შეიყვანეთ მაქსიმალური ბიუჯეტი':lang==='namesRus'?'Выберите дату и введите максимальный бюджет':'Select a date and enter a maximum budget.')
+        setErr(lang==='namesGeo'?'აირჩიეთ თარიღი და შეიყვანეთ მაქსიმალური ბიუჯეტი':lang==='namesRus'?'Выберите дату и введите максимальный бюджет':'Select a date and enter a maximum budget')
     }else if(mail==''||phone==''){
-        setErr(lang==='namesGeo'?'შეიყვანეთ საკონტაქტო ინფორმაცია':lang==='namesRus'?'Выберите дату и введите максимальный бюджет':'Select a date and enter a maximum budget.')
+        setErr(lang==='namesGeo'?'შეიყვანეთ საკონტაქტო ინფორმაცია':lang==='namesRus'?'Введите контактную информацию':'Enter contact information.')
     }else if(contact === ''){
-        setErr(lang==='namesGeo'?'აირჩიეთ სად გნებავთ რომ დაგიკავშირდეთ':lang==='namesRus'?'Выберите, где с вами связаться.':'Choose where you would like to be contacted.')
+        setErr(lang==='namesGeo'?'აირჩიეთ სად გნებავთ რომ დაგიკავშირდეთ':lang==='namesRus'?'Выберите, где с вами связаться':'Choose where you would like to be contacted')
     }
     else{
         setErr('')
@@ -115,7 +115,7 @@ const SendFunc = (contact) => {
 
            <center><div className='cat-col'>
            <p className='cat-f-text'>{lang==='namesGeo'?'თუ გსურთ სასტუმროს ან რესტორნის ორგანიზება, გთხოვთ, აირჩიოთ':lang==='namesRus'?'Если вы хотите организовать гостиницу или ресторан, выберите':'If you would like to organize a hotel or restaurant, please select'}</p>
-              <FormControlLabel sx={{width:'100%',paddingLeft:'40%'}} control={<Switch onClick={()=>setRest(e=>!e)} />} label={lang==='namesGeo'?'რესტორნის ორგანიზება':lang==='namesRus'?'Организация ресторана':'Restaurant organization'} />
+              <FormControlLabel sx={{}} control={<Switch onClick={()=>setRest(e=>!e)} />} label={lang==='namesGeo'?'რესტორნის ორგანიზება':lang==='namesRus'?'Организация ресторана':'Restaurant organization'} />
                 {rest == true
                 ?<div className="cat-org-box">
                 <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ რესტორანში':lang==='namesRus'?'В ресторане по нашему выбору':'At the restaurant of our choice'}</p>
@@ -133,7 +133,7 @@ const SendFunc = (contact) => {
                 :null
                 }
                 {/* Xazi */}
-              <FormControlLabel sx={{width:'100%',paddingLeft:'40%'}} control={<Switch onClick={()=>setHotel(e=>!e)} />} label={lang==='namesGeo'?'სასტუმროს ორგანიზება':lang==='namesRus'?'Организация гостиничного':'Hotel organization'} />
+              <FormControlLabel sx={{}} control={<Switch onClick={()=>setHotel(e=>!e)} />} label={lang==='namesGeo'?'სასტუმროს ორგანიზება':lang==='namesRus'?'Организация гостиничного':'Hotel organization'} />
               {hotel == true
                 ?<div className="cat-org-box">
                 <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':lang==='namesRus'?'В отеле, который мы выбрали':'At the hotel we chose'}</p>
@@ -150,7 +150,7 @@ const SendFunc = (contact) => {
                 ?<div className='cat-line'></div>
                 :null
                 }
-                <FormControlLabel sx={{width:'100%',paddingLeft:'40%'}} control={<Switch onClick={()=>setActive(e=>!e)} />} label={lang==='namesGeo'?'აქტივობების ორგანიზება':lang==='namesRus'?'Деятельность организовать':'Organizing an activity'} />
+                <FormControlLabel sx={{}} control={<Switch onClick={()=>setActive(e=>!e)} />} label={lang==='namesGeo'?'აქტივობების ორგანიზება':lang==='namesRus'?'Деятельность организовать':'Organizing an activity'} />
               {active == true
                 ?<div className="cat-org-box">
                 <p className='cat-org-text'>{lang==='namesGeo'?'ჩვენს მიერ არჩეულ სასტუმროში':lang==='namesRus'?'В отеле, который мы выбрали':'At the hotel we chose'}</p>
@@ -162,7 +162,6 @@ const SendFunc = (contact) => {
                 </div>
                 :null
                 }
-                
 
            </div></center>
 
@@ -199,16 +198,17 @@ const SendFunc = (contact) => {
 
    {/* BTN Send */}
    <center><div className='cat-col'>
+   <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ სად გნებავთ რომ დაგიკავშირდეთ':lang==='namesRus'?'Выберите, где с вами связаться.':'Choose where you would like to be contacted'}</p>
     <div className='contact'>
     <FormControl 
     sx={{display:'flex',justifyContent:'space-around',alignItems:'center',gap:'20px'}}
     onChange={(e)=>{setContacts(e.target.value)}}
     >
-  <p className='cat-f-text'>{lang==='namesGeo'?'აირჩიეთ სად გნებავთ რომ დაგიკავშირდეთ':lang==='namesRus'?'Выберите, где с вами связаться.':'Choose where you would like to be contacted'}</p>
   <RadioGroup
     aria-labelledby="demo-radio-buttons-group-label"
     defaultValue="female"
     name="radio-buttons-group"
+    sx={{display:'flex',flexDirection:{xs:'column',sm:'row'}}}
   >
     <FormControlLabel value="Phone" control={<Radio />} label={lang==='namesGeo'?'ტელეფონი':lang==='namesRus'?'Телефон':'Phone'} />
     <FormControlLabel value="Gmail" control={<Radio />} label="Gmail" />

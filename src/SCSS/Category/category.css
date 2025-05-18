@@ -37,6 +37,16 @@ input::-webkit-inner-spin-button {
   box-shadow: 0 0px 10px snow;
 }
 
+.fixed-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+}
+
 .cat-col-err {
   width: 70%;
   height: 250px;
@@ -186,15 +196,14 @@ input::-webkit-inner-spin-button {
 
 .gmail-contact {
   padding: 5px 10px;
-  width: 60%;
+  width: 50%;
   font-size: x-large;
   border: 1px solid #314648;
   border-radius: 2.4mm;
 }
 
 .contact-text {
-  width: 60%;
-  font-weight: bold;
+  width: 50%;
   font-size: large;
   color: #292929;
   text-align: start;
