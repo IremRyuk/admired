@@ -180,7 +180,7 @@ const SendFunc = (contact) => {
 {/* Budget */}
 <div className='budg-box-cur'>
 <input type='number' max={9999999} placeholder='123...' className='cat-bud'onChange={(e)=>dispatch(DataMax(e.target.value))} value={maxBud} />
-{maxBud==''?<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':lang==='nameRus'?'Бюджет':'Budget'} </p>:<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':lang==='nameRus'?'Бюджет':'Budget'} {maxBud}</p>}
+{maxBud==''?<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':lang==='namesRus'?'Бюджет':'Budget'} </p>:<p className='cat-f-text'> {lang==='namesGeo'?'ბიუჯეტი':lang==='namesRus'?'Бюджет':'Budget'} {maxBud}</p>}
 </div>
 </div>
 </div></center>

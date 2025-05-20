@@ -11,9 +11,6 @@ import AllAdmin from './Admin/AllAdmin'
 import Error from './Home/Error'
 import Gifts from './Category/Gifts'
 import Badges from './Home/Badges'
-import AdminImages from './Admin/AdminImages'
-import ImageChange from './Admin/ImageChange'
-import AllImages from './Admin/AllImages'
 
 function App() {
   return (
@@ -33,9 +30,6 @@ function App() {
       <Route path='/create' element={<AddAdmin />} />
       <Route path='/change/:id' element={<AdminChange />} />
       <Route path='/alladmin' element={<AllAdmin />} />
-      <Route path='/addimageryuk' element={<AdminImages />} />
-      <Route path='/changeImage/:id' element={<ImageChange />} />
-      <Route path='/allImages' element={<AllImages />} />
     </Routes>
     </div>
   )

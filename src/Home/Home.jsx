@@ -1,4 +1,5 @@
 import '../SCSS/Home/home.css'
+import Create from './Create'
 import Latest from './Latest'
 import SlideShow from './SlideShow'
 export default function Home () {
@@ -6,6 +7,7 @@ export default function Home () {
         <center><div className="home">
             <SlideShow />
             <Latest />
+            <Create />
         </div></center>
     )
 } 

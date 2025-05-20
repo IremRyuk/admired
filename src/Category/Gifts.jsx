@@ -158,7 +158,7 @@ const ShowAll = () => {
                 }
                 </div>
                 <div className="add" onClick={()=>AddFunct(res)}>
-                {lang==='namesGeo'?"დამატება":lang==='namesRus'?"Добавлять ":"Add"}
+                {lang==='namesGeo'?"დამატება":lang==='namesRus'?"Добавлять ":"Add To Cart"}
                 </div>
                 </div>
             </div>
